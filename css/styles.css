@@ -1,0 +1,18 @@
+body {
+  background-image: url("/images/poosdSiteBG.jpg");
+  /*got thei mage from ucf's mediagraph page but i think we may have to change it since we need to request access to download and i did Not do that.*/
+  /*https://mediagraph.io/ucf/explore/collections/arboretum#/assets/10589b33-c31c-4dc0-8446-c4c9d4e43faf*/
+  background-color: lightblue;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+h1 {
+  color: red;
+  text-align: right;
+}
+
+h2 {
+  text-align: center;
+}
