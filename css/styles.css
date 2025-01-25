@@ -9,10 +9,50 @@ body {
 }
 
 h1 {
-  color: red;
-  text-align: right;
+  text-align: left;
+  font-family: "Volkhof", sans-serif;
 }
 
-h2 {
+#loginDiv {
+  padding: 40px;
+  width: fit-content;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 25px;
+}
+input[type="text"],
+input[type="password"] {
+  border-radius: 25px;
   text-align: center;
+  height: 40px;
+  width: 200px;
+  margin-left: 15%;
+  margin-bottom: 3%;
+  font-family: "Volkhof", sans-serif;
+  opacity: 0.8;
+}
+
+#inner-title {
+  display: inline-block;
+  font-size: 1.8em;
+  width: 90%;
+  text-align: center;
+  margin-left: 5%;
+  margin-bottom: 2%;
+  font-family: "Volkhof", sans-serif;
+  color: black;
+}
+#loginName {
+}
+
+#loginButton {
+  background-color: white;
+  color: black;
+  border-radius: 25px;
+  display: inline-block;
+  margin-left: 40%;
+  margin-right: 60%;
+  cursor: pointer;
+  border: none;
 }

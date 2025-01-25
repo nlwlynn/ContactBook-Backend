@@ -4,15 +4,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Volkhov">
 </head>
 
 <body>
-    <h1>Leinecker's Pages</h1>
-
-    <h2> Login</h2>
+    <h1 id="textLogo">Leinecker's Pages</h1>
 
     <!--ok so i plan to have the login title in the middle then our forms below it. 
     idt its necessary to have the extra stuff/we can use that for after the user has logged in?-->
+    <div id="loginDiv">
+        <span id="inner-title">Log In</span>
+        <input type="text" id="loginName" placeholder="Username" /><br />
+        <input type="password" id="loginPassword" placeholder="Password"/><br />
+        <button type="button" id="loginButton" class="buttons" onclick="doLogin();"> Login </button>
+        <span id="loginResult"></span>
+
+    </div>
+
+    
 </body>
 </html>
  
