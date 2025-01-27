@@ -13,12 +13,12 @@ function doLogin()
 	
 	let login = document.getElementById("loginName").value;
 	let password = document.getElementById("loginPassword").value;
-//	var hash = md5( password );
+    let hash = md5( password );
 	
 	document.getElementById("loginResult").innerHTML = "";
 
-	let tmp = {login:login,password:password};
-//	var tmp = {login:login,password:hash};
+	let tmp = {login:login,password:hash};
+      //let tmp = {login:login,password:hash};
 	let jsonPayload = JSON.stringify( tmp );
 	
 	let url = urlBase + '/Login.' + extension;
@@ -63,6 +63,13 @@ document.getElementById("hideLogin").addEventListener("click", function(event){
     event.preventDefault();
     document.getElementById("loginForm").style.display="none";
     document.getElementById("registerForm").style.display="flex";
+});
+
+//click rehister link to view sign up form
+document.getElementById("showLogin").addEventListener("click", function(event){
+    event.preventDefault();
+    document.getElementById("registerForm").style.display="none";
+    document.getElementById("loginForm").style.display="flex";
 });
 
 
