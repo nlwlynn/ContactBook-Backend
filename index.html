@@ -12,16 +12,47 @@
 
     <!--ok so i plan to have the login title in the middle then our forms below it. 
     idt its necessary to have the extra stuff/we can use that for after the user has logged in?-->
-    <div id="loginDiv">
-        <span id="inner-title">Log In</span>
-        <input type="text" id="loginName" placeholder="Username" /><br />
-        <input type="password" id="loginPassword" placeholder="Password"/><br />
-        <button type="button" id="loginButton" class="buttons" onclick="doLogin();"> Login </button>
-        <span id="loginResult"></span>
 
-    </div>
-
+    <div id="signAndLog">
+    <form action="Login.php" id="loginForm" class="form">
+        
+            <h1 class="formLabel"> Log In</h1>
+            <label for="username"><b>Username</b></label>
+            <input type="text" placeholder="Enter username" name="username" required>
     
+            <label for="password"><b>Password</b></label>
+            <input type="text" placeholder="Enter password" name="password" required>
+            
+            
+                <button type="submit" class="button">Login</button>
+            
+            <p><a href="#" id="hideLogin"> New? Sign up here.</a></p>
+        
+    
+    </form>
+
+    <form id="signUp" class="form">
+        <h1 class="formLabel"> Sign Up</h1>
+            <label for="fName"><b>First Name</b></label>
+            <input type="text" placeholder="first name" required>
+
+            <label for="lName"><b>Last Name</b></label>
+            <input type="text" placeholder="last name" required>
+
+            <label for="fName"><b>Username</b></label>
+            <input type="text" placeholder="username" required>
+
+            <label for="fName"><b>Password</b></label>
+            <input type="text" placeholder="password" required>
+            
+            
+            <button type="submit">Sign Up</button>
+            
+    </form>
+
+</div>
+
+<script src="code.js"></script>
 </body>
 </html>
  

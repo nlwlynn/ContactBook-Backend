@@ -12,15 +12,10 @@ h1 {
   text-align: left;
   font-family: "Volkhof", sans-serif;
 }
-
-#loginDiv {
-  padding: 40px;
-  width: fit-content;
-  background-color: rgba(255, 255, 255, 0.5);
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 25px;
+.formLabel {
+  text-align: center;
 }
+
 input[type="text"],
 input[type="password"] {
   border-radius: 25px;
@@ -33,26 +28,48 @@ input[type="password"] {
   opacity: 0.8;
 }
 
-#inner-title {
-  display: inline-block;
-  font-size: 1.8em;
-  width: 90%;
+.form {
+  padding: 40px;
+  max-width: 350px;
+  background: rgba(255, 255, 255, 0.5);
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 25px;
   text-align: center;
-  margin-left: 5%;
-  margin-bottom: 2%;
-  font-family: "Volkhof", sans-serif;
-  color: black;
-}
-#loginName {
+  overflow: hidden;
+  height: 360px;
 }
 
-#loginButton {
-  background-color: white;
-  color: black;
-  border-radius: 25px;
-  display: inline-block;
-  margin-left: 40%;
-  margin-right: 60%;
+.button {
+  padding: 10px 24px;
+  font-size: 20px;
+  text-align: center;
   cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #4e6cc7;
   border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #32457e;
+
+  width: 30%;
+}
+
+.button:hover {
+  background-color: #144c96;
+}
+
+.button:active {
+  background-color: #4e6cc7;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+#hideLogin {
+  display: block;
+  text-align: center;
+}
+
+#signUp {
+  display: none;
 }
