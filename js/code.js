@@ -58,59 +58,59 @@ function doLogin()
 
 }
 
-
+//click rehister link to view sign up form
 document.getElementById("hideLogin").addEventListener("click", function(event){
     event.preventDefault();
     document.getElementById("loginForm").style.display="none";
-    document.getElementById("signUpform").style.display="flex";
+    document.getElementById("registerForm").style.display="flex";
 });
 
 
-function doSignup(){
+function doRegister(){
+    console.log("register lcicked");
+    //input field info
 firstName = document.getElementById("newFname").value;
 lastName = document.getElementById("newLname").value;
-
 let userName=document.getElementById("newUser").value;
 let password = document.getElementById("newPass").value;
 
-var hash=md5(password);
+//md5 hashing
+let hash=md5(password);
 
 let tmp= {
     firstName: firstName,
     lastName: lastName,
     login:userName,
     password: hash
-};
+}; //paylodo bject
 
 let jsonPayload = JSON.stringify(tmp);
-let url = urlBase + '/SignUp.' + extension;
+let url = urlBase + '/Register.' + extension;
 let xhr = new XMLHttpRequest();
 xhr.open("POST", url, true);
 xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
-xhr.onreadystatechange=function(){
-    if(this.readyState==4){
-        if(this.status == 200){
-            let jsonObject = JSON.parse(xhr.responseText);
-            userId=jsonObject.id;
-            document.getElementById("signupResult").innerHTML = "Sign Up Successful";
-            firstName=jsonObject.firstName;
-            lastName=jsonObject.lastName;
-            saveCookie();
-        }else if(this.status==409){
-            document.getElementById("signupResult").innerHTML = "user already exists";
-            return;
-        }else{
-            document.getElementById("signupResult").innerHTML = "error occurred try again";
-        }
-    }
-};
-
 try{
+    xhr.onreadystatechange = function (){
+        if(this.readyState == 4){
+            if(this.status == 409){
+                document.getElementById("signupResult").innerHTML = "user already exists";
+                return;
+            }else if(this.status = 200){
+                let jsonObject = JSON.parse(xhr.responseText);
+                userId = jsonObject.id;
+                document.getElementById("signupResult").innerHTML = "User added";
+                firstName = jsonObject.firstName;
+                lastName = jsonObject.lastName;
+                saveCookie();
+            }
+        }
+    };
     xhr.send(jsonPayload);
 }catch(err){
     document.getElementById("signupResult").innerHTML = err.message;
 }
+
 
 }
 

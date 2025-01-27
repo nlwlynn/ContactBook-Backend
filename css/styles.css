@@ -68,7 +68,7 @@ input[type="password"] {
   font-size: 30px;
 }
 
-#signUpform {
+#registerForm {
   display: none;
 }
 
@@ -106,4 +106,4 @@ ids (reference w #)
 1. loginForm
 2. loginName
 3. loginPassword
-4. signUpform --> for javascript */
+4. registerForm --> for javascript */
