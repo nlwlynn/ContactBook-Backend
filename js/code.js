@@ -103,7 +103,7 @@ try{
             if(this.status == 409){
                 document.getElementById("signupResult").innerHTML = "user already exists";
                 return;
-            }else if(this.status = 200){
+            }else if(this.status == 200){
                 let jsonObject = JSON.parse(xhr.responseText);
                 userId = jsonObject.id;
                 document.getElementById("signupResult").innerHTML = "User added";
