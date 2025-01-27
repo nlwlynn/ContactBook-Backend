@@ -12,47 +12,77 @@ h1 {
   text-align: left;
   font-family: "Volkhof", sans-serif;
 }
-.formLabel {
+
+.form {
+  /*this is for the entire form container */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 40px;
+  max-width: 350px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 25px;
+
+  margin: 0 auto;
   text-align: center;
+}
+
+.formLabel {
+  /*login and signup*/
+  text-align: center;
+  margin-bottom: 35px;
 }
 
 input[type="text"],
 input[type="password"] {
-  border-radius: 25px;
+  border-radius: 40px;
   text-align: center;
-  height: 40px;
-  width: 200px;
-  margin-left: 15%;
-  margin-bottom: 3%;
+  width: 80%;
+  margin-left: 5%;
+  margin-bottom: 13%;
   font-family: "Volkhof", sans-serif;
-  opacity: 0.8;
 }
 
-.form {
-  padding: 40px;
-  max-width: 350px;
-  background: rgba(255, 255, 255, 0.5);
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 25px;
-  text-align: center;
-  overflow: hidden;
-  height: 360px;
+#loginName {
+  font-size: 30px;
+}
+
+#loginPassword {
+  font-size: 30px;
+}
+
+#newUser {
+  font-size: 30px;
+}
+
+#newPass {
+  font-size: 30px;
+}
+
+#newFname {
+  font-size: 30px;
+}
+
+#newLname {
+  font-size: 30px;
+}
+
+#signUpform {
+  display: none;
 }
 
 .button {
-  padding: 10px 24px;
-  font-size: 20px;
-  text-align: center;
-  cursor: pointer;
-  outline: none;
-  color: #fff;
+  display: block;
+  font-size: 25px;
+  border-radius: 25px;
+  width: 35%;
+  margin-left: 0 auto;
+  font-family: "Volkhof", sans-serif;
   background-color: #4e6cc7;
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #32457e;
-
-  width: 30%;
 }
 
 .button:hover {
@@ -65,11 +95,15 @@ input[type="password"] {
   transform: translateY(4px);
 }
 
-#hideLogin {
-  display: block;
-  text-align: center;
-}
+/* classes (reference w .):
+1. formLabel
+2. form
+2. inputForms
+3. button
 
-#signUp {
-  display: none;
-}
+
+ids (reference w #)
+1. loginForm
+2. loginName
+3. loginPassword
+4. signUpform --> for javascript */

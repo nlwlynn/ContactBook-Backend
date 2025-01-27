@@ -9,50 +9,50 @@
 
 <body>
     <h1 id="textLogo">Leinecker's Pages</h1>
+    <!--login formn-->
 
-    <!--ok so i plan to have the login title in the middle then our forms below it. 
-    idt its necessary to have the extra stuff/we can use that for after the user has logged in?-->
-
-    <div id="signAndLog">
-    <form action="Login.php" id="loginForm" class="form">
+    <form id="loginForm" class="form">
         
             <h1 class="formLabel"> Log In</h1>
-            <label for="username"><b>Username</b></label>
-            <input type="text" placeholder="Enter username" name="username" required>
-    
-            <label for="password"><b>Password</b></label>
-            <input type="text" placeholder="Enter password" name="password" required>
-            
-            
-                <button type="submit" class="button">Login</button>
-            
-            <p><a href="#" id="hideLogin"> New? Sign up here.</a></p>
+            <div class="inputForms">
+
+                <input type="text" placeholder="Enter username" name="username" id="loginName" required>
         
+                <input type="text" placeholder="Enter password" name="password" id="loginPassword" required>
+                
+                
+            </div>
+            
+            <button type="button" class="button" id="loginButton" onclick="doLogin()">Login</button>
+
+            <p><a href="#" id="hideLogin"> New? Sign up here.</a></p>
+            <span class="text" id="loginResult"></span>
     
     </form>
 
-    <form id="signUp" class="form">
+    <!--signup formn-->
+    <form id="signUpform" class="form">
+        
         <h1 class="formLabel"> Sign Up</h1>
-            <label for="fName"><b>First Name</b></label>
-            <input type="text" placeholder="first name" required>
+        <div class="inputForms">
 
-            <label for="lName"><b>Last Name</b></label>
-            <input type="text" placeholder="last name" required>
-
-            <label for="fName"><b>Username</b></label>
-            <input type="text" placeholder="username" required>
-
-            <label for="fName"><b>Password</b></label>
-            <input type="text" placeholder="password" required>
+            <input type="text" placeholder="Enter first name" name="first name" id="newFname" required>
+    
+            <input type="text" placeholder="Enter last name" name="last name" id="newLname" required>
             
+            <input type="text" placeholder="Enter username" name="username" id="newUser" required>
+        
+            <input type="text" placeholder="Enter password" name="password" id="newPass" required>
             
-            <button type="submit">Sign Up</button>
-            
-    </form>
+        </div>
+        
+        <button type="button" class="button" id="signupButton" onclick="doSignup()">Sign Up</button>
+        <span class="text" id="signupResult"></span>
+    
 
-</div>
-
-<script src="code.js"></script>
+</form>
+<script src="js/md5.js" defer></script>
+<script src="js/code.js" defer></script>
 </body>
 </html>
  
