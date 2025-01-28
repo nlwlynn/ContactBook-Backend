@@ -117,10 +117,7 @@ try {
             lastName = jsonObject.lastName;
             saveCookie();
             
-            document.getElementById("newFname").value = "";
-            document.getElementById("newLname").value = "";
-            document.getElementById("newUser").value = "";
-            document.getElementById("newPass").value = "";
+            
         }
     };
     xhr.send(jsonPayload);
