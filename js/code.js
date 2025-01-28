@@ -81,12 +81,11 @@ lastName = document.getElementById("newLname").value;
 let userName=document.getElementById("newUser").value;
 let password = document.getElementById("newPass").value;
 
-if (!validSignUpForm(firstName, lastName, userName, password)) {
+/*if (!validSignUpForm(firstName, lastName, userName, password)) {
     document.getElementById("signupResult").innerHTML = "Invalid signup data";
     return;
-}
+}*/
 
-//md5 hashing
 let hash=md5(password);
 document.getElementById("signupResult").innerHTML = "";
 
