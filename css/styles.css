@@ -40,6 +40,7 @@ body {
 
 input[type="text"],
 input[type="password"] {
+  /*ATM, passwords are parsed as reg. text in index.html so type=password is redundant*/
   border-radius: 40px;
   text-align: center;
   width: 80%;
