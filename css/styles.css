@@ -8,9 +8,13 @@ body {
   background-attachment: fixed;
 }
 
-h1 {
+#textLogo {
   text-align: left;
   font-family: "Volkhof", sans-serif;
+}
+#textLogo .active {
+  pointer-events: none;
+  cursor: pointer;
 }
 
 .form {
@@ -106,4 +110,5 @@ ids (reference w #)
 1. loginForm
 2. loginName
 3. loginPassword
-4. registerForm --> for javascript */
+4. registerForm --> for javascript 
+5. textLogo*/
