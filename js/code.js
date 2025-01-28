@@ -74,15 +74,21 @@ document.getElementById("showLogin").addEventListener("click", function(event){
 
 
 function doRegister(){
-    console.log("register lcicked");
+    
     //input field info
 firstName = document.getElementById("newFname").value;
 lastName = document.getElementById("newLname").value;
 let userName=document.getElementById("newUser").value;
 let password = document.getElementById("newPass").value;
 
+if (!validSignUpForm(firstName, lastName, userName, password)) {
+    document.getElementById("signupResult").innerHTML = "Invalid signup data";
+    return;
+}
+
 //md5 hashing
 let hash=md5(password);
+document.getElementById("signupResult").innerHTML = "";
 
 let tmp= {
     firstName: firstName,
@@ -97,20 +103,25 @@ let xhr = new XMLHttpRequest();
 xhr.open("POST", url, true);
 xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
-try{
-    xhr.onreadystatechange = function (){
-        if(this.readyState == 4){
-            if(this.status == 409){
-                document.getElementById("signupResult").innerHTML = "user already exists";
+try {
+    xhr.onreadystatechange = function() {
+        if(this.readyState == 4 && this.status == 200) {
+            let jsonObject = JSON.parse(xhr.responseText);
+            
+            if(jsonObject.error) {
+                document.getElementById("signupResult").innerHTML = jsonObject.error;
                 return;
-            }else if(this.status == 200){
-                let jsonObject = JSON.parse(xhr.responseText);
-                userId = jsonObject.id;
-                document.getElementById("signupResult").innerHTML = "User added";
-                firstName = jsonObject.firstName;
-                lastName = jsonObject.lastName;
-                saveCookie();
             }
+            userId = jsonObject.id;
+            document.getElementById("signupResult").innerHTML = "User added";
+            firstName = jsonObject.firstName;
+            lastName = jsonObject.lastName;
+            saveCookie();
+            
+            document.getElementById("newFname").value = "";
+            document.getElementById("newLname").value = "";
+            document.getElementById("newUser").value = "";
+            document.getElementById("newPass").value = "";
         }
     };
     xhr.send(jsonPayload);
@@ -162,3 +173,4 @@ function readCookie()
 		document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
 	}
 }
+
