@@ -170,3 +170,46 @@ function readCookie()
 	}
 }
 
+function doAddContact() {
+	let cFirstName = document.getElementById("cFirstName").value;
+	let cLastName = document.getElementById("cLastName").value;
+	let cPhoneNumber = document.getElementById("cPhoneNumber").value;
+	let cEmail = document.getElementById("cEmail").value;
+
+	let tmp = {
+		userId: userId,
+		firstName: cFirstName,
+		lastName: cLastName,
+		Phone: cPhoneNumber,
+		email: cEmail
+	}
+
+	let jsonPayload = JSON.stringify(tmp);
+	let url = urlBase + '/AddContact.' + extension;
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+	try
+	{
+		xhr.onreadystatechange = function() 
+		{
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				let jsonObject = JSON.parse(xhr.responseText);
+            
+				if(jsonObject.error) {
+					document.getElementById("addResult").innerHTML = jsonObject.error;
+					return;
+				}
+				document.getElementById("addResult").innerHTML = "Contact successfully added";
+				saveCookie();
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("addResult").innerHTML = err.message;
+	}
+}

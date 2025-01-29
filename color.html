@@ -11,5 +11,31 @@
         <h1 id="textLogo"><a href="index.html">Leinecker's Pages</a></h1>
 
         <p>YOU HAVE LOGGED IN. you are now my elite employee.</p>
+
+        <!--data table holding the list of contacts-->
+        <table id="contactsList">
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Options</th>
+        </table>
+
+        <!--add contact form-->
+        <form id="addContactForm" class="form">
+            <h1 class="formLabel">Add Contact</h1>
+            <div class="inputForms">
+                <input type="text" placeholder="Enter first name" name="first name" id="cFirstName" required>
+    
+                <input type="text" placeholder="Enter last name" name="last name" id="cLastName" required>
+                
+                <input type="text" placeholder="Enter phone number" name="phone number" id="cPhoneNumber" required>
+            
+                <input type="text" placeholder="Enter email" name="email" id="cEmail" required>
+            </div>
+
+            <button type="button" class="button" id="addButton" onclick="doAddContact()">Add</button>
+            <span class="text" id="addResult"></span>
+        </form>
     </body>
 </html>
