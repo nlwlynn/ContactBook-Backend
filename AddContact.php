@@ -5,11 +5,11 @@
     $userId = $inData["userId"];
     $firstName = $inData["firstName"];
     $lastName = $inData["lastName"];
-    $Phone = $inData["Phone"];
+    $phone = $inData["phone"];
     $email = $inData["email"];
 
-    if (empty($userId) || empty($firstName) || empty($lastName) || empty($Phone) || empty($email)) {
-        returnWithError("Missing data: Ensure all fields (userId, firstName, lastName, Phone, email) are provided.");
+    if (empty($userId) || empty($firstName) || empty($lastName) || empty($phone) || empty($email)) {
+        returnWithError("Missing data: Ensure all fields (userId, firstName, lastName, phone, email) are provided.");
         exit();
     }
 
@@ -26,7 +26,7 @@
     echo "Database connected successfully.\n";
 
     // Prepare and execute SQL statement
-    $stmt = $conn->prepare("INSERT INTO Contacts (userId, firstName, lastName, Phone, email) VALUES (?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO Contacts (userId, firstName, lastName, phone, email) VALUES (?, ?, ?, ?, ?)");
 
     // Check for prepare errors
     if (!$stmt) {
@@ -34,8 +34,8 @@
         exit();
     }
 
-    $stmt->bind_param("issss", $userId, $firstName, $lastName, $Phone, $email);
-    echo "Binding values: userId=$userId, firstName=$firstName, lastName=$lastName, Phone=$Phone, email=$email\n";
+    $stmt->bind_param("sssss", $userId, $firstName, $lastName, $phone, $email);
+    echo "Binding values: userId=$userId, firstName=$firstName, lastName=$lastName, phone=$phone, email=$email\n";
 
     // Execute SQL statement
     if (!$stmt->execute()) {
