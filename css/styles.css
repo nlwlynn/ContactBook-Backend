@@ -21,10 +21,10 @@ body {
 }
 
 #textLogo a {
-  color: #333;
+  color: #ffffff;
   text-decoration: none;
   font-size: 2.5rem;
-  text-shadow: 2px 2px 4px rgba(24, 24, 24, 0.1);
+  text-shadow: 2px 2px 4px rgba(24, 24, 24, 0.8);
 }
 
 .form {
@@ -44,16 +44,21 @@ body {
 
 .formLabel {
   /*login and signup*/
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+  font-size: 35px;
   text-align: center;
   margin-bottom: 35px;
   font-family: "Fredoka", sans-serif;
 }
+
+.form-logo {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 5px;
+}
 .inputForms {
   margin-bottom: 20px;
-}
-
-.inputForms input {
-  background: none;
 }
 
 input[type="text"],
@@ -65,8 +70,8 @@ input[type="password"] {
   margin-left: 5%;
   margin-bottom: 13%;
   font-family: "Fredoka", sans-serif;
-  background: rgba(255, 255, 255, 0.9);
-  appearance: none;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 20px;
 }
 
 #loginName {
@@ -101,10 +106,13 @@ input[type="password"] {
   display: block;
   font-size: 25px;
   border-radius: 25px;
-  width: 35%;
+  width: 50%;
   margin: 0 auto;
   font-family: "Fredoka", sans-serif;
-  background-color: #c96371;
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+
+  background-color: rgb(230, 123, 137);
   border: none;
   border-radius: 15px;
 }
@@ -125,6 +133,20 @@ input[type="password"] {
   text-decoration: none;
   font-size: 20px;
   text-shadow: 2px 2px 4px rgba(24, 24, 24, 0.1);
+}
+
+#showLogin {
+  color: #333;
+  text-decoration: none;
+  font-family: "Fredoka", sans-serif;
+  font-size: 20px;
+  text-shadow: 2px 2px 4px rgba(24, 24, 24, 0.1);
+}
+
+#loginResult,
+#signupResult {
+  color: #333;
+  font-family: "Fredoka", sans-serif;
 }
 
 /* classes (reference w .):
