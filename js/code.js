@@ -180,7 +180,7 @@ function doAddContact() {
 		userId: userId,
 		firstName: cFirstName,
 		lastName: cLastName,
-		Phone: cPhoneNumber,
+		phone: cPhoneNumber,
 		email: cEmail
 	}
 
