@@ -102,7 +102,7 @@ input[type="password"] {
   font-size: 25px;
   border-radius: 25px;
   width: 35%;
-  margin-left: 0 auto;
+  margin: 0 auto;
   font-family: "Fredoka", sans-serif;
   background-color: #c96371;
   border: none;

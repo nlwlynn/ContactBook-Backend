@@ -213,3 +213,7 @@ function doAddContact() {
 		document.getElementById("addResult").innerHTML = err.message;
 	}
 }
+
+//delete
+//update
+//search
