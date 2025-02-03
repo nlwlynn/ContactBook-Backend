@@ -21,10 +21,10 @@ body {
 }
 
 #textLogo a {
-  color: #ffffff;
+  color: #221b10;
   text-decoration: none;
   font-size: 2.5rem;
-  text-shadow: 2px 2px 4px rgba(24, 24, 24, 0.8);
+  text-shadow: 2px 2px 4px rgba(243, 189, 211, 0.8);
 }
 
 .form {
@@ -35,7 +35,7 @@ body {
 
   padding: 40px;
   max-width: 350px;
-  background-color: rgb(216, 208, 216, 0.8);
+  background-color: rgb(216, 208, 216, 0.95);
   border-radius: 25px;
 
   margin: 0 auto;

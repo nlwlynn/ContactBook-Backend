@@ -21,7 +21,7 @@
                 
                 <button type="button" class="button" id="loginButton" onclick="doLogin()">Login</button>
 
-            <p><a href="#" id="hideLogin" onclick="hideLog()"> New? Sign up here.</a></p>
+            <p><a href="#" id="hideLogin"> New? Sign up here.</a></p>
             <span class="text" id="loginResult"></span>
             </div>
             
@@ -40,13 +40,15 @@
     
             <input type="text" placeholder="Enter last name" name="last name" id="newLname" required>
             
-            <input type="text" placeholder="Enter username" name="username" id="newUser" required>
+            <input type="text" placeholder="Enter username" name="username" id="newUser" required pattern="(?=.*[a-zA-Z])[a-zA-Z0-9-_]{3,18}"
+            title="Username must be 3-18 characters and contain at least one letter">
         
-            <input type="password" placeholder="Enter password" name="password" id="newPass" required>
+            <input type="password" placeholder="Enter password" name="password" id="newPass" required pattern="(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}"
+            title="Password must be 8-32 characters with at least one letter, number, and special character">
             
         </div>
         <button type="button" class="button" id="registerButton" onclick="doRegister()">Register</button>
-        <p><a href="#" id="showLogin" onclick="hideReg()"> Back to Login</a></p>
+        <p><a href="#" id="showLogin"> Back to Login</a></p>
         <span class="text" id="signupResult"></span>
 </form>
 
