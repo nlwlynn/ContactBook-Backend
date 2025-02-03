@@ -238,93 +238,81 @@ function doAddContact() {
 //update
 //search
 
-/*
-function doSearch(){
-	let srch = document.getElementById("searchInput").value;
-	document.getElementById("colorSearchResult").innerHTML = "";
+function doSearch() {
+  let srch = document.getElementById("searchInput"); //get user imput
+  document.getElementById("searchResult").innerHTML = ""; //clear prev searrch
 
-	let userList = "";
+  //nothing to search
+  if (srch === "") {
+    return;
+  }
 
-	let tmp = {search:srch,userId:userId};
-	let jsonPayload = JSON.stringify( tmp );
+  let userList = "";
 
-	let url = urlBase + '/SearchContacts.' + extension;
-	
-	let xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	try
-	{
-		xhr.onreadystatechange = function() 
-		{
-			if (this.readyState == 4 && this.status == 200) 
-			{
-				document.getElementById("colorSearchResult").innerHTML = "Color(s) has been retrieved";
-				let jsonObject = JSON.parse( xhr.responseText );
-				
-				for( let i=0; i<jsonObject.results.length; i++ )
-				{
-					userList += jsonObject.results[i];
-					if( i < jsonObject.results.length - 1 )
-					{
-						userList += "<br />\r\n";
-					}
-				}
-				
-				document.getElementsByTagName("p")[0].innerHTML = userList;
-			}
-		};
-		xhr.send(jsonPayload);
-	}
-	catch(err)
-	{
-		document.getElementById("searchResult").innerHTML = err.message;
-	}
+  let tmp = {
+    search: srch,
+    userId: userId,
+  };
 
+  let jsonPayload = JSON.stringify(tmp);
+
+  let url = urlBase + "/SearchContacts." + extension;
+
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", url, true);
+  xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+  try {
+    xhr.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("searchResult").innerHTML =
+          "User has been retrieved";
+        let jsonObject = JSON.parse(xhr.responseText);
+        let users = document.getElementById("userlist");
+
+        for (let i = 0; i < jsonObject.results.length; i++) {
+          userList += jsonObject.results[i];
+          if (i < jsonObject.results.length - 1) {
+            userList += "<br />\r\n";
+          }
+        }
+
+        document.getElementsByTagName("p")[0].innerHTML = userList;
+      }
+    };
+    xhr.send(jsonPayload);
+  } catch (err) {
+    document.getElementById("searchResult").innerHTML = err.message;
+  }
 }
-	*/
-/*
 
-	let srch = document.getElementById("searchText").value;
-	document.getElementById("colorSearchResult").innerHTML = "";
-	
-	let colorList = "";
+/* 4331paradise's search ftn... above search is based on leineckers code.js
+function searchContacts() {
+  const content = document.getElementById("searchText");
+  const selections = content.value.toUpperCase().split(" ");
+  const table = document.getElementById("contacts");
+  const tr = table.getElementsByTagName("tr"); // Table Row
 
-	let tmp = {search:srch,userId:userId};
-	let jsonPayload = JSON.stringify( tmp );
+  for (let i = 0; i < tr.length; i++) {
+    const td_fn = tr[i].getElementsByTagName("td")[0]; // Table Data: First Name
+    const td_ln = tr[i].getElementsByTagName("td")[1]; // Table Data: Last Name
 
-	let url = urlBase + '/SearchColors.' + extension;
-	
-	let xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	try
-	{
-		xhr.onreadystatechange = function() 
-		{
-			if (this.readyState == 4 && this.status == 200) 
-			{
-				document.getElementById("colorSearchResult").innerHTML = "Color(s) has been retrieved";
-				let jsonObject = JSON.parse( xhr.responseText );
-				
-				for( let i=0; i<jsonObject.results.length; i++ )
-				{
-					colorList += jsonObject.results[i];
-					if( i < jsonObject.results.length - 1 )
-					{
-						colorList += "<br />\r\n";
-					}
-				}
-				
-				document.getElementsByTagName("p")[0].innerHTML = colorList;
-			}
-		};
-		xhr.send(jsonPayload);
-	}
-	catch(err)
-	{
-		document.getElementById("colorSearchResult").innerHTML = err.message;
-	}
+    if (td_fn && td_ln) {
+      const txtValue_fn = td_fn.textContent || td_fn.innerText;
+      const txtValue_ln = td_ln.textContent || td_ln.innerText;
+      tr[i].style.display = "none";
+
+      for (selection of selections) {
+        if (txtValue_fn.toUpperCase().indexOf(selection) > -1) {
+          tr[i].style.display = "";
+        }
+        if (txtValue_ln.toUpperCase().indexOf(selection) > -1) {
+          tr[i].style.display = "";
+        }
+      }
+    }
+  }
+}
+
 */
 
 //validation functions
@@ -387,7 +375,7 @@ function validateAdd(firstName, lastName, phone, email) {
   if (phone === "") {
     errors.phone = "Please enter a phone number";
   } else {
-    let phoneRegex = /^\d+.{10,11}$/; //nums, 10-11 char
+    let phoneRegex = /^\d+$/; //nums, 10-11 char
     if (!phoneRegex.test(phone)) {
       errors.phone = "Only numbers allowed";
     }

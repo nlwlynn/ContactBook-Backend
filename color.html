@@ -14,14 +14,12 @@
 
         <div class="searchSection">
             <div class="searchBar">
-                <input type="text" id="searchInput" onkeyup="doSearch(this.value)" placeholder="Search contacts..." >
+                <input type="text" id="searchInput" onkeyup="doSearch(this.value)" placeholder="Search contacts"  list="userList">
+            <datalist id="userList"></datalist>
             </div>
-            <p id="userList"></p>
-            <span class="text" id="searchResult"></span>
-
-
             
-            </p>
+            <span class="text" id="searchResult"></span>
+            
             <div class="actions">
                 <button class="searchButton">
                     <i class="fa fa-search search-icon"></i>
@@ -32,6 +30,8 @@
                 </button>
             </div>
         </div>
+
+
 
         <div id="overlay">
             <div id="entireContactSection">
