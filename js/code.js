@@ -189,6 +189,9 @@ function doAddContact() {
   let phone = document.getElementById("cPhoneNumber").value;
   let email = document.getElementById("cEmail").value;
 
+  if (!validateAdd(firstName, lastName, phone, email)) {
+    return;
+  }
   let tmp = {
     userId: userId,
     firstName: firstName,
@@ -211,9 +214,9 @@ function doAddContact() {
           document.getElementById("addResult").innerHTML = jsonObject.error;
           return;
         }
-        //	userId=jsonObject.id;
-        //	firstName = jsonObject.firstName;
-        //	lastName = jsonObject.lastName;
+        userId = jsonObject.id;
+        firstName = jsonObject.firstName;
+        lastName = jsonObject.lastName;
         document.getElementById("addResult").innerHTML =
           "Contact successfully added";
 
@@ -230,6 +233,7 @@ function doAddContact() {
   }
 }
 
+//logoout
 //delete
 //update
 //search
@@ -360,6 +364,47 @@ function validateRegister(firstName, lastName, userName, password) {
   if (Object.keys(errors).length > 0) {
     const errorMessages = Object.values(errors).join("<br>");
     document.getElementById("signupResult").innerHTML = errorMessages;
+    return false;
+  }
+
+  return true;
+}
+
+//validate add contact
+function validateAdd(firstName, lastName, phone, email) {
+  let errors = {};
+
+  //fname val
+  if (firstName === "") {
+    errors.firstName = "Please enter a first name";
+  }
+
+  //lname val
+  if (lastName === "") {
+    errors.lastName = "Please enter a last name";
+  }
+  //phone val
+  if (phone === "") {
+    errors.phone = "Please enter a phone number";
+  } else {
+    let phoneRegex = /^\d+.{10,11}$/; //nums, 10-11 char
+    if (!phoneRegex.test(phone)) {
+      errors.phone = "Only numbers allowed";
+    }
+  }
+
+  //email vall
+  if (email === "") {
+    errors.email = "Please enter an email";
+  } else {
+    let emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    if (!emailRegex.test(email)) {
+      errors.email = "Email must be in email@mail.com format";
+    }
+  }
+  if (Object.keys(errors).length > 0) {
+    const errorMessages = Object.values(errors).join("<br>");
+    document.getElementById("addResult").innerHTML = errorMessages;
     return false;
   }
 
