@@ -1,4 +1,5 @@
 <?php
+
     $inData = getRequestInfo();
     
     // Extract variables from JSON request

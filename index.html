@@ -17,11 +17,11 @@
 
                 <input type="text" placeholder="Enter username" name="username" id="loginName" required>
         
-                <input type="text" placeholder="Enter password" name="password" id="loginPassword" required>
+                <input type="password" placeholder="Enter password" name="password" id="loginPassword" required>
                 
                 <button type="button" class="button" id="loginButton" onclick="doLogin()">Login</button>
 
-            <p><a href="#" id="hideLogin"> New? Sign up here.</a></p>
+            <p><a href="#" id="hideLogin" onclick="hideLog()"> New? Sign up here.</a></p>
             <span class="text" id="loginResult"></span>
             </div>
             
@@ -42,11 +42,11 @@
             
             <input type="text" placeholder="Enter username" name="username" id="newUser" required>
         
-            <input type="text" placeholder="Enter password" name="password" id="newPass" required>
+            <input type="password" placeholder="Enter password" name="password" id="newPass" required>
             
         </div>
         <button type="button" class="button" id="registerButton" onclick="doRegister()">Register</button>
-        <p><a href="#" id="showLogin"> Back to Login</a></p>
+        <p><a href="#" id="showLogin" onclick="hideReg()"> Back to Login</a></p>
         <span class="text" id="signupResult"></span>
 </form>
 

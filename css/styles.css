@@ -64,7 +64,8 @@ body {
   font-size: 30px;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="password"] {
   border-radius: 40px;
   text-align: center;
   width: 80%;

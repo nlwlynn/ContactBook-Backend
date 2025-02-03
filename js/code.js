@@ -7,16 +7,26 @@ let lastName = "";
 
 function doLogin()
 {
+	console.log("doLogin function called");
 	userId = 0;
 	firstName = "";
 	lastName = "";
 	
 	let login = document.getElementById("loginName").value;
 	let password = document.getElementById("loginPassword").value;
-    let hash = md5( password );
-	
+
+	console.log("Login:", login); 
+    console.log("Password:", password); 
+
+	if(!login || !password){
+		document.getElementById("loginResult").innerHTML = "Please fill out all fields.";
+        return;
+	}
+	let hash = md5( password );
+
 	document.getElementById("loginResult").innerHTML = "";
 
+	
 	let tmp = {login:login,password:hash};
       //let tmp = {login:login,password:hash};
 	let jsonPayload = JSON.stringify( tmp );
@@ -29,7 +39,7 @@ function doLogin()
 	try
 	{
 		xhr.onreadystatechange = function() 
-		{
+		{console.log("ReadyState:", xhr.readyState, "Status:", xhr.status);
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
@@ -58,19 +68,26 @@ function doLogin()
 
 }
 
-//click rehister link to view sign up form
-document.getElementById("hideLogin").addEventListener("click", function(event){
-    event.preventDefault();
-    document.getElementById("loginForm").style.display="none";
-    document.getElementById("registerForm").style.display="flex";
-});
+function hideLog(){
+	//click rehister link to view sign up form
+	document.getElementById("hideLogin").addEventListener("click", function(event){
+		event.preventDefault();
+		document.getElementById("loginForm").style.display="none";
+		document.getElementById("registerForm").style.display="flex";
+	});
+	}
+	
+function hideReg(){
+	//click login link to view login  form
+	document.getElementById("showLogin").addEventListener("click", function(event){
+		event.preventDefault();
+		document.getElementById("registerForm").style.display="none";
+		document.getElementById("loginForm").style.display="flex";
+	});
+	}
+	
 
-//click rehister link to view sign up form
-document.getElementById("showLogin").addEventListener("click", function(event){
-    event.preventDefault();
-    document.getElementById("registerForm").style.display="none";
-    document.getElementById("loginForm").style.display="flex";
-});
+
 
 
 function doRegister(){
@@ -115,7 +132,7 @@ try {
             document.getElementById("signupResult").innerHTML = "User added";
             firstName = jsonObject.firstName;
             lastName = jsonObject.lastName;
-            saveCookie();
+           // saveCookie();
             
             
         }
@@ -126,7 +143,7 @@ try {
 }
 
 
-}
+} 
 
 
 function saveCookie()
@@ -191,11 +208,16 @@ function openAddContactForm() {
   }
 
 function doAddContact() {
+	console.log("doAddContact function called");
 	let firstName = document.getElementById("cFirstName").value;
 	let lastName = document.getElementById("cLastName").value;
 	let phone = document.getElementById("cPhoneNumber").value;
 	let email = document.getElementById("cEmail").value;
-
+	
+	if (!firstName || !lastName || !phone || !email) {
+        document.getElementById("addResult").innerHTML = "Please fill out all fields.";
+        return;
+    }
 	let tmp = {
 		userId: userId,
 		firstName: firstName,
@@ -246,6 +268,7 @@ function doAddContact() {
 //update
 //search
 
+/*
 function doSearch(){
 	let srch = document.getElementById("searchInput").value;
 	document.getElementById("colorSearchResult").innerHTML = "";
@@ -288,7 +311,7 @@ function doSearch(){
 		document.getElementById("searchResult").innerHTML = err.message;
 	}
 
-}
+}*/
 	
 /*
 
