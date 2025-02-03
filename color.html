@@ -4,40 +4,69 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/css/styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     </head>
 
     <body>
         <h1 id="textLogo"><a href="index.html">Leinecker's Pages</a></h1>
 
+        <div class="searchSection">
+            <div class="searchBar">
+                <input type="text" id="searchInput" onkeyup="doSearch(this.value)" placeholder="Search contacts..." >
+            </div>
+            <p id="userList"></p>
+            <span class="text" id="searchResult"></span>
 
-        <!--data table holding the list of contacts-->
-        <table id="contactsList">
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Phone Number</th>
-            <th>Email</th>
-            <th>Options</th>
-        </table>
 
-        <!--add contact form-->
-        <form id="addContactForm" class="form">
-            <h1 class="formLabel">Add Contact</h1>
-            <div class="inputForms">
-                <input type="text" placeholder="Enter first name" name="first name" id="cFirstName" required>
-    
-                <input type="text" placeholder="Enter last name" name="last name" id="cLastName" required>
-                
-                <input type="text" placeholder="Enter phone number" name="phone number" id="cPhoneNumber" required>
             
-                <input type="text" placeholder="Enter email" name="email" id="cEmail" required>
+            </p>
+            <div class="actions">
+                <button class="searchButton">
+                    <i class="fa fa-search search-icon"></i>
+                </button>
 
-                <button type="button" class="button" id="addButton" onclick="doAddContact()">Add</button>
-            <span class="text" id="addResult"></span>
+                <button id="addUserButton" onclick="openAddContactForm()">
+                    <i class="fa fa-user-plus"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="overlay">
+            <div id="entireContactSection">
+                <span class="closeForm" onclick="closeAddContactForm()">&times;</span>
+              <form id="addContactForm" class="form">
+                <h1 class="formLabel">Add Contact</h1>
+                <div class="inputForms">
+                    <input type="text" placeholder="Enter first name" name="first name" id="cFirstName" required>
+        
+                    <input type="text" placeholder="Enter last name" name="last name" id="cLastName" required>
+                    
+                    <input type="text" placeholder="Enter phone number" name="phone number" id="cPhoneNumber" required>
+                
+                    <input type="text" placeholder="Enter email" name="email" id="cEmail" required>
+    
+                    <button type="button" class="button" id="addButton" onclick="doAddContact()">Add</button>
+                <span class="text" id="addResult"></span>
+                </div>
+    
+                
+            </form>   
             </div>
 
-            
-        </form>
-        <script src="js/md5.js" defer></script>
-        <script src="js/code.js" defer></script>
-        </body>
-        </html>
+        </div>
+        
+        <div class="contactsHeader">
+            <div class="headerColumnNames">FIRST NAME</div>
+            <div class="headerColumnNames">LAST NAME</div>
+            <div class="headerColumnNames">EMAIL</div>
+            <div class="headerColumnNames">PHONE</div>
+        </div>
+        
+
+
+
+        <script src="js/md5.js" ></script>
+        <script src="js/code.js" ></script>
+    </body>
+</html>

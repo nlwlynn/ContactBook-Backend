@@ -8,11 +8,11 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  font-family: "Fredoka", sans-serif;
 }
 
 #textLogo {
   text-align: left;
-  font-family: "Fredoka", sans-serif;
 }
 
 #textLogo .active {
@@ -49,7 +49,6 @@ body {
   font-size: 35px;
   text-align: center;
   margin-bottom: 35px;
-  font-family: "Fredoka", sans-serif;
 }
 
 .form-logo {
@@ -61,41 +60,18 @@ body {
   margin-bottom: 20px;
 }
 
-input[type="text"],
-input[type="password"] {
-  /*ATM, passwords are parsed as reg. text in index.html so type=password is redundant*/
+.inputForms input {
+  font-size: 30px;
+}
+
+input[type="text"] {
   border-radius: 40px;
   text-align: center;
   width: 80%;
   margin-left: 5%;
   margin-bottom: 13%;
-  font-family: "Fredoka", sans-serif;
   background: rgba(255, 255, 255, 0.5);
   padding: 20px;
-}
-
-#loginName {
-  font-size: 30px;
-}
-
-#loginPassword {
-  font-size: 30px;
-}
-
-#newUser {
-  font-size: 30px;
-}
-
-#newPass {
-  font-size: 30px;
-}
-
-#newFname {
-  font-size: 30px;
-}
-
-#newLname {
-  font-size: 30px;
 }
 
 #registerForm {
@@ -108,7 +84,6 @@ input[type="password"] {
   border-radius: 25px;
   width: 50%;
   margin: 0 auto;
-  font-family: "Fredoka", sans-serif;
   color: white;
   text-shadow: 2px 2px 4px #000000;
 
@@ -129,7 +104,6 @@ input[type="password"] {
 
 #hideLogin {
   color: #333;
-  font-family: "Fredoka", sans-serif;
   text-decoration: none;
   font-size: 20px;
   text-shadow: 2px 2px 4px rgba(24, 24, 24, 0.1);
@@ -138,7 +112,6 @@ input[type="password"] {
 #showLogin {
   color: #333;
   text-decoration: none;
-  font-family: "Fredoka", sans-serif;
   font-size: 20px;
   text-shadow: 2px 2px 4px rgba(24, 24, 24, 0.1);
 }
@@ -146,7 +119,109 @@ input[type="password"] {
 #loginResult,
 #signupResult {
   color: #333;
-  font-family: "Fredoka", sans-serif;
+}
+
+/*Contact fORM section*/
+.searchSection {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  justify-content: center;
+  padding: 10px;
+  max-width: 1200px;
+}
+.searchBar {
+  position: relative;
+  width: 50%;
+}
+#searchInput {
+  width: 100%;
+  padding: 10px 40px 10px 15px;
+  border-radius: 20px;
+  border: none;
+  background-color: white;
+  font-size: 16px;
+}
+
+/*search button and add user button*/
+.actions {
+  display: flex;
+  gap: 10px;
+}
+.searchButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-98%);
+}
+
+#addUserButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-98%);
+}
+
+/*when addform is on*/
+#overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+/*add contact form*/
+#entireContactSection {
+  display: none;
+  margin-top: 90px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  width: fit-content;
+}
+/*x button*/
+.closeForm {
+  position: absolute;
+  right: 25px;
+  top: 15px;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #000;
+}
+
+.closeForm:hover {
+  color: Red;
+}
+
+/*table*/
+.contactsHeader {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgb(230, 123, 137);
+  width: 990px;
+  padding: 15px;
+  margin-top: 20px;
+}
+.headerColumnNames {
+  flex: 1;
+  color: white;
 }
 
 /* classes (reference w .):

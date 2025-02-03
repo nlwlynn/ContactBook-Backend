@@ -170,18 +170,38 @@ function readCookie()
 	}
 }
 
+
+   // document.getElementById("addUserButton").addEventListener("click", openAddContactForm);
+ //   document.getElementById("addButton").addEventListener("click", doAddContact);
+ //   document.querySelector(".closeForm").addEventListener("click", closeAddContactForm);
+
+ 
+
+
+//then once clicking on the x button, add from disappears and contact form retunrs
+
+function openAddContactForm() {
+	document.getElementById("overlay").style.display = "flex";
+	document.getElementById("entireContactSection").style.display = "flex";
+  }
+  
+  function closeAddContactForm() {
+	document.getElementById("overlay").style.display = "none";
+	document.getElementById("entireContactSection").style.display = "none";
+  }
+
 function doAddContact() {
-	let cFirstName = document.getElementById("cFirstName").value;
-	let cLastName = document.getElementById("cLastName").value;
-	let cPhoneNumber = document.getElementById("cPhoneNumber").value;
-	let cEmail = document.getElementById("cEmail").value;
+	let firstName = document.getElementById("cFirstName").value;
+	let lastName = document.getElementById("cLastName").value;
+	let phone = document.getElementById("cPhoneNumber").value;
+	let email = document.getElementById("cEmail").value;
 
 	let tmp = {
 		userId: userId,
-		firstName: cFirstName,
-		lastName: cLastName,
-		phone: cPhoneNumber,
-		email: cEmail
+		firstName: firstName,
+		lastName: lastName,
+		phone: phone,
+		email: email
 	}
 
 	let jsonPayload = JSON.stringify(tmp);
@@ -197,13 +217,20 @@ function doAddContact() {
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				let jsonObject = JSON.parse(xhr.responseText);
-            
 				if(jsonObject.error) {
 					document.getElementById("addResult").innerHTML = jsonObject.error;
 					return;
 				}
+			//	userId=jsonObject.id;
+			//	firstName = jsonObject.firstName;
+			//	lastName = jsonObject.lastName;
 				document.getElementById("addResult").innerHTML = "Contact successfully added";
-				saveCookie();
+
+				document.getElementById("cFirstName").value = "";
+				document.getElementById("cLastName").value = "";
+				document.getElementById("cPhoneNumber").value = "";
+				document.getElementById("cEmail").value = "";
+				//saveCookie();
 			}
 		};
 		xhr.send(jsonPayload);
@@ -214,6 +241,95 @@ function doAddContact() {
 	}
 }
 
+
 //delete
 //update
 //search
+
+function doSearch(){
+	let srch = document.getElementById("searchInput").value;
+	document.getElementById("colorSearchResult").innerHTML = "";
+
+	let userList = "";
+
+	let tmp = {search:srch,userId:userId};
+	let jsonPayload = JSON.stringify( tmp );
+
+	let url = urlBase + '/SearchContacts.' + extension;
+	
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function() 
+		{
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				document.getElementById("colorSearchResult").innerHTML = "Color(s) has been retrieved";
+				let jsonObject = JSON.parse( xhr.responseText );
+				
+				for( let i=0; i<jsonObject.results.length; i++ )
+				{
+					userList += jsonObject.results[i];
+					if( i < jsonObject.results.length - 1 )
+					{
+						userList += "<br />\r\n";
+					}
+				}
+				
+				document.getElementsByTagName("p")[0].innerHTML = userList;
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("searchResult").innerHTML = err.message;
+	}
+
+}
+	
+/*
+
+	let srch = document.getElementById("searchText").value;
+	document.getElementById("colorSearchResult").innerHTML = "";
+	
+	let colorList = "";
+
+	let tmp = {search:srch,userId:userId};
+	let jsonPayload = JSON.stringify( tmp );
+
+	let url = urlBase + '/SearchColors.' + extension;
+	
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function() 
+		{
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				document.getElementById("colorSearchResult").innerHTML = "Color(s) has been retrieved";
+				let jsonObject = JSON.parse( xhr.responseText );
+				
+				for( let i=0; i<jsonObject.results.length; i++ )
+				{
+					colorList += jsonObject.results[i];
+					if( i < jsonObject.results.length - 1 )
+					{
+						colorList += "<br />\r\n";
+					}
+				}
+				
+				document.getElementsByTagName("p")[0].innerHTML = colorList;
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("colorSearchResult").innerHTML = err.message;
+	}
+*/
