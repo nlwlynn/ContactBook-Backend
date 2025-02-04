@@ -213,14 +213,12 @@ function doAddContact() {
   try {
     xhr.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
-        let jsonObject = JSON.parse(xhr.responseText);
-        if (jsonObject.error) {
+        console.log("contact has been added.");
+
+        /*  if (jsonObject.error) {
           document.getElementById("addResult").innerHTML = jsonObject.error;
           return;
-        }
-        //    userId = jsonObject.id;
-        //   firstName = jsonObject.firstName;
-        //    lastName = jsonObject.lastName;
+        }*/
         document.getElementById("addResult").innerHTML =
           "Contact successfully added";
 
@@ -228,7 +226,9 @@ function doAddContact() {
         document.getElementById("cLastName").value = "";
         document.getElementById("cPhoneNumber").value = "";
         document.getElementById("cEmail").value = "";
-        //add to table here..
+
+        //add to table here
+        addRow();
         //saveCookie();
       }
     };
@@ -238,11 +238,47 @@ function doAddContact() {
   }
 }
 
+function addRow() {
+  //const tbody = document.getElementById("tableBody");
+  let tmp = {
+    search: "",
+    userId: userId,
+  };
+
+  let jsonPayload = JSON.stringify(tmp);
+  let url = urlBase + "/SearchContacts." + extension;
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", url, true);
+  xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+  try {
+    xhr.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        // Parse the response
+        let jsonObject = JSON.parse(xhr.responseText);
+        if (jsonObject.error) {
+          document.getElementById("addResult").innerHTML = jsonObject.error;
+          return;
+        }
+
+        //nrw row
+        let rowsHTML = "";
+        //dynamically create rows upon addition of new contact
+      }
+    };
+    xhr.send(jsonPayload);
+  } catch (err) {
+    console.log(err.message);
+  }
+}
+
 //need function to add contacts to table
 
 //logoout
 //delete
 //update
+
+/*
 //search
 function doSearch() {
   let srch = document.getElementById("searchInput"); //get user imput
@@ -280,7 +316,7 @@ function doSearch() {
     document.getElementById("searchResult").innerHTML = err.message;
   }
 }
-
+*/
 /* 4331paradise's search ftn... above search is based on leineckers code.js
 function searchContacts() {
   const content = document.getElementById("searchText");
@@ -394,3 +430,6 @@ function validateAdd(firstName, lastName, phone, email) {
 
   return true;
 }
+
+//validate login
+function validLoginForm(loginUser, loginPass) {}
