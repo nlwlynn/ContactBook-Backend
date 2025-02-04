@@ -211,19 +211,6 @@ input[type="password"] {
 }
 
 /*table*/
-.contactsHeader {
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: rgb(230, 123, 137);
-  width: 990px;
-  padding: 15px;
-  margin-top: 20px;
-}
-.headerColumnNames {
-  flex: 1;
-  color: white;
-}
 
 /* classes (reference w .):
 1. formLabel

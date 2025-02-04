@@ -168,7 +168,10 @@ function readCookie() {
 }
 
 // document.getElementById("addUserButton").addEventListener("click", openAddContactForm);
-//   document.getElementById("addButton").addEventListener("click", doAddContact);
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("addButton").addEventListener("click", doAddContact);
+});
+//
 //   document.querySelector(".closeForm").addEventListener("click", closeAddContactForm);
 
 //then once clicking on the x button, add from disappears and contact form retunrs
@@ -192,6 +195,7 @@ function doAddContact() {
   if (!validateAdd(firstName, lastName, phone, email)) {
     return;
   }
+
   let tmp = {
     userId: userId,
     firstName: firstName,
@@ -214,9 +218,9 @@ function doAddContact() {
           document.getElementById("addResult").innerHTML = jsonObject.error;
           return;
         }
-        userId = jsonObject.id;
-        firstName = jsonObject.firstName;
-        lastName = jsonObject.lastName;
+        //    userId = jsonObject.id;
+        //   firstName = jsonObject.firstName;
+        //    lastName = jsonObject.lastName;
         document.getElementById("addResult").innerHTML =
           "Contact successfully added";
 
@@ -224,6 +228,7 @@ function doAddContact() {
         document.getElementById("cLastName").value = "";
         document.getElementById("cPhoneNumber").value = "";
         document.getElementById("cEmail").value = "";
+        //add to table here..
         //saveCookie();
       }
     };
@@ -233,14 +238,15 @@ function doAddContact() {
   }
 }
 
+//need function to add contacts to table
+
 //logoout
 //delete
 //update
 //search
-
 function doSearch() {
   let srch = document.getElementById("searchInput"); //get user imput
-  document.getElementById("searchResult").innerHTML = ""; //clear prev searrch
+  document.getElementById("searchResult").innerHTML = "";
 
   //nothing to search
   if (srch === "") {
@@ -267,16 +273,6 @@ function doSearch() {
         document.getElementById("searchResult").innerHTML =
           "User has been retrieved";
         let jsonObject = JSON.parse(xhr.responseText);
-        let users = document.getElementById("userlist");
-
-        for (let i = 0; i < jsonObject.results.length; i++) {
-          userList += jsonObject.results[i];
-          if (i < jsonObject.results.length - 1) {
-            userList += "<br />\r\n";
-          }
-        }
-
-        document.getElementsByTagName("p")[0].innerHTML = userList;
       }
     };
     xhr.send(jsonPayload);
@@ -387,7 +383,7 @@ function validateAdd(firstName, lastName, phone, email) {
   } else {
     let emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     if (!emailRegex.test(email)) {
-      errors.email = "Email must be in email@mail.com format";
+      errors.email = "Email must be in name@mail.com format";
     }
   }
   if (Object.keys(errors).length > 0) {

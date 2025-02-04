@@ -14,12 +14,12 @@
 
         <div class="searchSection">
             <div class="searchBar">
-                <input type="text" id="searchInput" onkeyup="doSearch(this.value)" placeholder="Search contacts"  list="userList">
-            <datalist id="userList"></datalist>
+                <input type="text" id="searchInput" oninput="doSearch()" placeholder="Search contacts">
+            
             </div>
             
             <span class="text" id="searchResult"></span>
-            
+
             <div class="actions">
                 <button class="searchButton">
                     <i class="fa fa-search search-icon"></i>
@@ -56,12 +56,21 @@
             </div>
 
         </div>
-        
-        <div class="contactsHeader">
-            <div class="headerColumnNames">FIRST NAME</div>
-            <div class="headerColumnNames">LAST NAME</div>
-            <div class="headerColumnNames">EMAIL</div>
-            <div class="headerColumnNames">PHONE</div>
+    
+        <div id = "contactsTable">
+            <table id="usersList">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
         </div>
         
 
