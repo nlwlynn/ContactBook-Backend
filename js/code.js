@@ -46,7 +46,6 @@ function doLogin() {
 
         firstName = jsonObject.firstName;
         lastName = jsonObject.lastName;
-
         saveCookie();
 
         window.location.href = "color.html";
@@ -139,13 +138,14 @@ function saveCookie() {
     lastName +
     ",userId=" +
     userId +
-    ";expires=" +
+    ",expires=" +
     date.toGMTString();
 }
 
 function readCookie() {
   userId = -1;
   let data = document.cookie;
+  console.log(document.cookie);
   let splits = data.split(",");
   for (var i = 0; i < splits.length; i++) {
     let thisOne = splits[i].trim();
@@ -161,9 +161,6 @@ function readCookie() {
 
   if (userId < 0) {
     window.location.href = "index.html";
-  } else {
-    document.getElementById("userName").innerHTML =
-      "Logged in as " + firstName + " " + lastName;
   }
 }
 
@@ -187,6 +184,7 @@ function closeAddContactForm() {
 }
 
 function doAddContact() {
+  readCookie();
   let firstName = document.getElementById("cFirstName").value;
   let lastName = document.getElementById("cLastName").value;
   let phone = document.getElementById("cPhoneNumber").value;
