@@ -11,11 +11,38 @@ body {
   font-family: "Fredoka", sans-serif;
 }
 
-#textLogo {
-  text-align: left;
+div.content{
+  /* background:  rgb(113, 42, 113); */
+  background: linear-gradient(to right, rgb(243, 189, 211) 10%, rgba(255, 255, 255, 0.773));
+  width:1000px;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  margin: 10cqi;
+  text-align: center;
+  container-type:inline-size;
+  position: center; 
 }
 
-#textLogo .active {
+#textLogo b {
+  color: #221b10;
+  text-decoration: none;
+  font-size: 1.0rem;
+  text-shadow: 2px 2px 4px rgba(243, 189, 211, 0.8);
+  max-width: 30px;
+}
+
+#textLogo {
+  text-align: left;
+  position: relative;
+  top: 150px;
+  left: 75px; 
+  width: 100%;
+}
+
+div.content.textLogo .active {
   pointer-events: none;
   cursor: pointer;
 }
@@ -23,7 +50,7 @@ body {
 #textLogo a {
   color: #221b10;
   text-decoration: none;
-  font-size: 2.5rem;
+  font-size: 3.0rem;
   text-shadow: 2px 2px 4px rgba(243, 189, 211, 0.8);
 }
 
@@ -32,10 +59,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
+
+  position: relative;
+  left: 200px;
+  bottom: 75px;
 
   padding: 40px;
   max-width: 350px;
-  background-color: rgb(216, 208, 216, 0.95);
+  background-color: #FFC0CB;
   border-radius: 25px;
 
   margin: 0 auto;
@@ -46,11 +78,15 @@ body {
   /*login and signup*/
   color: white;
   text-shadow: 2px 2px 4px #000000;
-  font-size: 35px;
+  font-size: 40px;
   text-align: center;
-  margin-bottom: 35px;
+  position: relative;
+  top: -20px;
+  left: 0px;
+  margin-bottom: 0px;
 }
 
+/*flower logo - add animation button here*/
 .form-logo {
   width: 100px;
   height: 100px;
@@ -68,7 +104,7 @@ input[type="text"],
 input[type="password"] {
   border-radius: 40px;
   text-align: center;
-  width: 80%;
+  width: 70%;
   margin-left: 5%;
   margin-bottom: 13%;
   background: rgba(255, 255, 255, 0.5);
