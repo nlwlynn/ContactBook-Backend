@@ -276,77 +276,9 @@ function addRow() {
 //delete
 //update
 
-/*
-//search
 function doSearch() {
-  let srch = document.getElementById("searchInput"); //get user imput
-  document.getElementById("searchResult").innerHTML = "";
-
-  //nothing to search
-  if (srch === "") {
-    return;
-  }
-
-  let userList = "";
-
-  let tmp = {
-    search: srch,
-    userId: userId,
-  };
-
-  let jsonPayload = JSON.stringify(tmp);
-
-  let url = urlBase + "/SearchContacts." + extension;
-
-  let xhr = new XMLHttpRequest();
-  xhr.open("POST", url, true);
-  xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-  try {
-    xhr.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("searchResult").innerHTML =
-          "User has been retrieved";
-        let jsonObject = JSON.parse(xhr.responseText);
-      }
-    };
-    xhr.send(jsonPayload);
-  } catch (err) {
-    document.getElementById("searchResult").innerHTML = err.message;
-  }
-}
-*/
-/* 4331paradise's search ftn... above search is based on leineckers code.js
-function searchContacts() {
-  const content = document.getElementById("searchText");
-  const selections = content.value.toUpperCase().split(" ");
-  const table = document.getElementById("contacts");
-  const tr = table.getElementsByTagName("tr"); // Table Row
-
-  for (let i = 0; i < tr.length; i++) {
-    const td_fn = tr[i].getElementsByTagName("td")[0]; // Table Data: First Name
-    const td_ln = tr[i].getElementsByTagName("td")[1]; // Table Data: Last Name
-
-    if (td_fn && td_ln) {
-      const txtValue_fn = td_fn.textContent || td_fn.innerText;
-      const txtValue_ln = td_ln.textContent || td_ln.innerText;
-      tr[i].style.display = "none";
-
-      for (selection of selections) {
-        if (txtValue_fn.toUpperCase().indexOf(selection) > -1) {
-          tr[i].style.display = "";
-        }
-        if (txtValue_ln.toUpperCase().indexOf(selection) > -1) {
-          tr[i].style.display = "";
-        }
-      }
-    }
-  }
-}
-
-*/
-
-function doSearch() {
-  let searchString = document.getElementById("searchInput");
+  readCookie();
+  let searchString = document.getElementById("searchInput").value;
   if (searchString == "") return;
 
   let tmp = {
@@ -366,6 +298,7 @@ function doSearch() {
       if (this.readyState == 4 && this.status == 200) {
         document.getElementById("searchResult").innerHTML =
           "User has been retrieved";
+        console.log(xhr.responseText);
         let jsonObject = JSON.parse(xhr.responseText);
       }
     };
