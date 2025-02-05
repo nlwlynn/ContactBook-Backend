@@ -1,6 +1,5 @@
 const urlBase = "http://leineckerspages.xyz/LAMPAPI";
 const extension = "php";
-/*need to add validation functions for signup and apss and username */
 let userId = 0;
 let firstName = "";
 let lastName = "";
@@ -225,8 +224,8 @@ function doAddContact() {
         document.getElementById("cPhoneNumber").value = "";
         document.getElementById("cEmail").value = "";
 
-        //add to table here
-        addRow();
+        //add card here
+        addRow(jsonPayload);
         //saveCookie();
       }
     };
@@ -236,41 +235,38 @@ function doAddContact() {
   }
 }
 
-function addRow() {
-  //const tbody = document.getElementById("tableBody");
-  let tmp = {
-    search: "",
-    userId: userId,
-  };
+function addRow(jsonPayload) {
+  const contactJSON = JSON.parse(jsonPayload); //the json info but put back as a json object
+  //retrieve the element containing all of our cards
+  const cards = document.querySelector(".contactCards");
 
-  let jsonPayload = JSON.stringify(tmp);
-  let url = urlBase + "/SearchContacts." + extension;
-  let xhr = new XMLHttpRequest();
-  xhr.open("POST", url, true);
-  xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+  const singleCard = document.createElement("div"); //ref. the html divs..
+  singleCard.className = "singleCard";
 
-  try {
-    xhr.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-        // Parse the response
-        let jsonObject = JSON.parse(xhr.responseText);
-        if (jsonObject.error) {
-          document.getElementById("addResult").innerHTML = jsonObject.error;
-          return;
-        }
+  const singleCardInfo = document.createElement("div");
+  singleCardInfo.className = "singleCardInfo";
 
-        //nrw row
-        let rowsHTML = "";
-        //dynamically create rows upon addition of new contact
-      }
-    };
-    xhr.send(jsonPayload);
-  } catch (err) {
-    console.log(err.message);
-  }
+  const contactInfo = `
+       <div class="contactName">
+           <h3>${contactJSON.firstName} ${contactJSON.lastName}</h3>
+       </div>
+       <div class="contactDetails">
+           <p><strong>Phone:</strong> ${contactJSON.phone}</p>
+           <p><strong>Email:</strong> ${contactJSON.email}</p>
+       </div>
+       <div class="cardActions">
+           <button onclick="editContact(this)" class="editBtn">Edit</button>
+           <button onclick="deleteContact(this)" class="deleteBtn">Delete</button>
+       </div>
+   `;
+
+  //Change the HTML content of an element with id="demo":  https://www.w3schools.com/Jsref/prop_html_innerhtml.asp
+  singleCardInfo.innerHTML = contactInfo;
+
+  //append to existing card(s) (they will be in a list formatting iirc)
+  singleCard.appendChild(singleCardInfo);
+  cards.appendChild(singleCard);
 }
-
-//need function to add contacts to table
 
 //logoout
 //delete
@@ -283,8 +279,8 @@ function doSearch() {
 
   let tmp = {
     search: searchString,
-    userId: userId
-  }
+    userId: userId,
+  };
 
   let jsonPayload = JSON.stringify(tmp);
 
@@ -395,23 +391,46 @@ function validateAdd(firstName, lastName, phone, email) {
 //validate login
 function validLoginForm(loginUser, loginPass) {}
 
-doFlowerAnimation()
+doFlowerAnimation();
 {
   var falling = true;
 
-  TweenLite.set("#container",{perspective:600})
+  TweenLite.set("#container", { perspective: 600 });
   //TweenLite.set("img",{xPercent:"-50%",yPercent:"-50%"})
 
   var total = 10;
-  var container = document.getElementById("container"),	w = window.innerWidth , h = window.innerHeight;
- 
-  for (i=0; i<total; i++){ 
-    var Div = document.createElement('div');
-    var Div2 = document.createElement('div');
-    var Div3 = document.createElement('div');
-    TweenLite.set(Div,{attr:{class:'dot'},x:R(0,w),y:R(-200,-150),z:R(-200,200),xPercent:"-50%",yPercent:"-50%"});
-    TweenLite.set(Div2,{attr:{class:'dot2'},x:R(0,w),y:R(-200,-150),z:R(-200,200),xPercent:"-50%",yPercent:"-50%"});
-    TweenLite.set(Div3,{attr:{class:'dot3'},x:R(0,w),y:R(-200,-150),z:R(-200,200),xPercent:"-50%",yPercent:"-50%"});
+  var container = document.getElementById("container"),
+    w = window.innerWidth,
+    h = window.innerHeight;
+
+  for (i = 0; i < total; i++) {
+    var Div = document.createElement("div");
+    var Div2 = document.createElement("div");
+    var Div3 = document.createElement("div");
+    TweenLite.set(Div, {
+      attr: { class: "dot" },
+      x: R(0, w),
+      y: R(-200, -150),
+      z: R(-200, 200),
+      xPercent: "-50%",
+      yPercent: "-50%",
+    });
+    TweenLite.set(Div2, {
+      attr: { class: "dot2" },
+      x: R(0, w),
+      y: R(-200, -150),
+      z: R(-200, 200),
+      xPercent: "-50%",
+      yPercent: "-50%",
+    });
+    TweenLite.set(Div3, {
+      attr: { class: "dot3" },
+      x: R(0, w),
+      y: R(-200, -150),
+      z: R(-200, 200),
+      xPercent: "-50%",
+      yPercent: "-50%",
+    });
     container.appendChild(Div);
     container.appendChild(Div2);
     container.appendChild(Div3);
@@ -419,22 +438,72 @@ doFlowerAnimation()
     animm2(Div2);
     animm3(Div3);
   }
- 
-  function animm(elm){   
-    TweenMax.to(elm,R(6,15),{y:h+100,ease:Linear.easeNone,repeat:-1,delay:-15});
-    TweenMax.to(elm,R(4,8),{x:'+=100',rotationZ:R(0,180),repeat:-1,yoyo:true,ease:Sine.easeInOut});
-    TweenMax.to(elm,R(2,8),{repeat:-1,yoyo:true,ease:Sine.easeInOut,delay:-5});
-  };
-  function animm2(elm){   
-    TweenMax.to(elm,R(6,15),{y:h+100,ease:Linear.easeNone,repeat:-1,delay:-25});
-    TweenMax.to(elm,R(4,8),{x:'+=100',rotationZ:R(0,180),repeat:-1,yoyo:true,ease:Sine.easeInOut});
-    TweenMax.to(elm,R(2,8),{repeat:-1,yoyo:true,ease:Sine.easeInOut,delay:-5});
-  };
-  function animm3(elm){   
-    TweenMax.to(elm,R(6,15),{y:h+100,ease:Linear.easeNone,repeat:-1,delay:-5});
-    TweenMax.to(elm,R(4,8),{x:'+=100',rotationZ:R(0,180),repeat:-1,yoyo:true,ease:Sine.easeInOut});
-    TweenMax.to(elm,R(2,8),{repeat:-1,yoyo:true,ease:Sine.easeInOut,delay:-5});
-  };
 
-  function R(min,max) {return min+Math.random()*(max-min)};
+  function animm(elm) {
+    TweenMax.to(elm, R(6, 15), {
+      y: h + 100,
+      ease: Linear.easeNone,
+      repeat: -1,
+      delay: -15,
+    });
+    TweenMax.to(elm, R(4, 8), {
+      x: "+=100",
+      rotationZ: R(0, 180),
+      repeat: -1,
+      yoyo: true,
+      ease: Sine.easeInOut,
+    });
+    TweenMax.to(elm, R(2, 8), {
+      repeat: -1,
+      yoyo: true,
+      ease: Sine.easeInOut,
+      delay: -5,
+    });
+  }
+  function animm2(elm) {
+    TweenMax.to(elm, R(6, 15), {
+      y: h + 100,
+      ease: Linear.easeNone,
+      repeat: -1,
+      delay: -25,
+    });
+    TweenMax.to(elm, R(4, 8), {
+      x: "+=100",
+      rotationZ: R(0, 180),
+      repeat: -1,
+      yoyo: true,
+      ease: Sine.easeInOut,
+    });
+    TweenMax.to(elm, R(2, 8), {
+      repeat: -1,
+      yoyo: true,
+      ease: Sine.easeInOut,
+      delay: -5,
+    });
+  }
+  function animm3(elm) {
+    TweenMax.to(elm, R(6, 15), {
+      y: h + 100,
+      ease: Linear.easeNone,
+      repeat: -1,
+      delay: -5,
+    });
+    TweenMax.to(elm, R(4, 8), {
+      x: "+=100",
+      rotationZ: R(0, 180),
+      repeat: -1,
+      yoyo: true,
+      ease: Sine.easeInOut,
+    });
+    TweenMax.to(elm, R(2, 8), {
+      repeat: -1,
+      yoyo: true,
+      ease: Sine.easeInOut,
+      delay: -5,
+    });
+  }
+
+  function R(min, max) {
+    return min + Math.random() * (max - min);
+  }
 }

@@ -7,18 +7,18 @@ body {
   background-color: lightblue;
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed; 
+  background-attachment: fixed;
   font-family: "Fredoka", sans-serif;
 }
 
-#dashboard{
+#dashboard {
   background-image: url("/images/dashboard.jpg");
 }
 
-#textLogoDashboard a{
+#textLogoDashboard a {
   color: #221b10;
   text-decoration: none;
-  font-size: 3.0rem;
+  font-size: 3rem;
   text-shadow: 2px 2px 4px rgba(243, 189, 211, 0.8);
 }
 
@@ -26,14 +26,18 @@ body {
   text-align: center;
   position: relative;
   top: 0px;
-  left: 0px; 
+  left: 0px;
   width: 100%;
 }
 
-div.content{
+div.content {
   /* background:  rgb(113, 42, 113); */
-  background: linear-gradient(to right, rgb(243, 189, 211) 10%, rgba(255, 255, 255, 0.773));
-  width:1000px;
+  background: linear-gradient(
+    to right,
+    rgb(243, 189, 211) 10%,
+    rgba(255, 255, 255, 0.773)
+  );
+  width: 1000px;
   border-radius: 25px;
   display: flex;
   flex-direction: column;
@@ -41,14 +45,14 @@ div.content{
   overflow: hidden;
   margin: 10cqi;
   text-align: center;
-  container-type:inline-size;
-  position: center; 
+  container-type: inline-size;
+  position: center;
 }
 
 #textLogo b {
   color: #221b10;
   text-decoration: none;
-  font-size: 1.0rem;
+  font-size: 1rem;
   text-shadow: 2px 2px 4px rgba(243, 189, 211, 0.8);
   max-width: 30px;
 }
@@ -57,7 +61,7 @@ div.content{
   text-align: left;
   position: relative;
   top: 150px;
-  left: 75px; 
+  left: 75px;
   width: 100%;
 }
 
@@ -69,7 +73,7 @@ div.content.textLogo .active {
 #textLogo a {
   color: #221b10;
   text-decoration: none;
-  font-size: 3.0rem;
+  font-size: 3rem;
   text-shadow: 2px 2px 4px rgba(243, 189, 211, 0.8);
 }
 
@@ -86,7 +90,7 @@ div.content.textLogo .active {
 
   padding: 40px;
   max-width: 350px;
-  background-color: #FFC0CB;
+  background-color: #ffc0cb;
   border-radius: 25px;
 
   margin: 0 auto;
@@ -142,7 +146,7 @@ input[type="password"] {
   display: none;
 }
 
-.buttonLogo{
+.buttonLogo {
   display: inline-flex;
   font-size: 25px;
   border-radius: 25px;
@@ -159,36 +163,44 @@ input[type="password"] {
   border-radius: 100px;
 }
 
-.dot
-  {
-    width:35px;
-    height:35px;
-    position:absolute;
-    background: url(http://img.babathe.com/upload/specialDisplay/htmlImage/2019/20190104_rose2.png);
-    background-size: 100% 100%;
-  }
-.dot2
-  {
-    width:35px;
-    height:35px;
-    position:absolute;
-    background: url(http://img.babathe.com/upload/specialDisplay/htmlImage/2019/20190104_rose.png);
-    background-size: 100% 100%;
-  }
-  .dot3
-  {
-    width:35px;
-    height:35px;
-    position:absolute;
-    background: url(http://img.babathe.com/upload/specialDisplay/htmlImage/2019/20190104_rose3.png);
-    background-size: 100% 100%;
-  }
-  html, body, #container {width:100%; height:100%; }
-  #logo{ left:50%; top:50%; position:absolute; border-radius:10px; }
-  
-  #DiacoDesignLink,#pens{
-    color: #fff;
-  }
+.dot {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  background: url(http://img.babathe.com/upload/specialDisplay/htmlImage/2019/20190104_rose2.png);
+  background-size: 100% 100%;
+}
+.dot2 {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  background: url(http://img.babathe.com/upload/specialDisplay/htmlImage/2019/20190104_rose.png);
+  background-size: 100% 100%;
+}
+.dot3 {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  background: url(http://img.babathe.com/upload/specialDisplay/htmlImage/2019/20190104_rose3.png);
+  background-size: 100% 100%;
+}
+html,
+body,
+#container {
+  width: 100%;
+  height: 100%;
+}
+#logo {
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  border-radius: 10px;
+}
+
+#DiacoDesignLink,
+#pens {
+  color: #fff;
+}
 
 .buttonLogo:active {
   transform: translateY(4px);
@@ -325,6 +337,9 @@ input[type="password"] {
   color: Red;
 }
 
+.contactCards {
+  background: Green;
+}
 /*table*/
 
 /* classes (reference w .):
