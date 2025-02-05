@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Leinecker's Pages</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
-    <h1 id="textLogo"><a href="index.html">Leinecker's Pages - Contact Manager</a></h1>
-    <!--login formn-->
+    <div class="content">
+        <h1 id="textLogo"><a href="index.html">Leinecker's Pages</a></h1>
+        <h2 id="textLogo"><b href="index.html">A contact manager for your blooming connections</b></h2>
+        
+        <!--login formn-->
 
-    <form id="loginForm" class="form">
-        <img src="/images/leineckersLogo.png" alt="Leinecker's Pages Logo" class="form-logo">
+        <form id="loginForm" class="form">
+            <img src="/images/leineckersLogo.png" alt="Leinecker's Pages Logo" class="form-logo">
             <h1 class="formLabel"> Log In</h1>
             <div class="inputForms">
 
@@ -24,36 +28,34 @@
             <p><a href="#" id="hideLogin"> New? Sign up here.</a></p>
             <span class="text" id="loginResult"></span>
             </div>
-            
-            
+        </form>
+
+        <!--register formn-->
+        <form id="registerForm" class="form" name="signupform">
+            <img src="/images/leineckersLogo.png" alt="Leinecker's Pages Logo" class="form-logo">
+
+            <h1 class="formLabel"> Sign Up</h1>
+            <div class="inputForms">
+
+                <input type="text" placeholder="Enter first name" name="first name" id="newFname" required>
     
-    </form>
-
-    <!--register formn-->
-    <form id="registerForm" class="form" name="signupform">
-        <img src="/images/leineckersLogo.png" alt="Leinecker's Pages Logo" class="form-logo">
-
-        <h1 class="formLabel"> Sign Up</h1>
-        <div class="inputForms">
-
-            <input type="text" placeholder="Enter first name" name="first name" id="newFname" required>
-    
-            <input type="text" placeholder="Enter last name" name="last name" id="newLname" required>
+                <input type="text" placeholder="Enter last name" name="last name" id="newLname" required>
             
-            <input type="text" placeholder="Enter username" name="username" id="newUser" required pattern="(?=.*[a-zA-Z])[a-zA-Z0-9-_]{3,18}"
-            title="Username must be 3-18 characters and contain at least one letter">
+                <input type="text" placeholder="Enter username" name="username" id="newUser" required pattern="(?=.*[a-zA-Z])[a-zA-Z0-9-_]{3,18}"
+                title="Username must be 3-18 characters and contain at least one letter">
         
-            <input type="password" placeholder="Enter password" name="password" id="newPass" required pattern="(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}"
-            title="Password must be 8-32 characters with at least one letter, number, and special character">
+                <input type="password" placeholder="Enter password" name="password" id="newPass" required pattern="(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}"
+                title="Password must be 8-32 characters with at least one letter, number, and special character">
             
-        </div>
-        <button type="button" class="button" id="registerButton" onclick="doRegister()">Register</button>
-        <p><a href="#" id="showLogin"> Back to Login</a></p>
-        <span class="text" id="signupResult"></span>
-</form>
+            </div>
+            <button type="button" class="button" id="registerButton" onclick="doRegister()">Register</button>
+            <p><a href="#" id="showLogin"> Back to Login</a></p>
+            <span class="text" id="signupResult"></span>
+        </form>
 
-<script src="js/md5.js"></script>
-<script src="js/code.js"></script>
+        <script src="js/md5.js"></script>
+        <script src="js/code.js"></script>
+    </div>
 </body>
 </html>
  
