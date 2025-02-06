@@ -316,8 +316,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-//delete
-function deleteCard() {}
 //update
 function updateCard(editBtn) {
   //see the html in addRow. this ftn is called when the edit button is clicked
@@ -478,6 +476,13 @@ function loadContacts() {
   }
 }
 
+//delete
+function deleteCard() {
+  //should have a parameter. for a button , delete (can just do deleteBtn or smth similar)
+  //repeat the exact process from UPDATECARD only remove the card instead of updating it like .remove()
+  //honestly not fully sure how that will work but yea
+}
+
 function doSearch() {
   readCookie();
   let searchString = document.getElementById("searchInput").value;
@@ -498,10 +503,15 @@ function doSearch() {
   try {
     xhr.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
+        let jsonObject = JSON.parse(xhr.responseText);
+        //1. clear all the contacts we're seeing now , like that entire display.
+        //then check whether any contacts were retrieved and display the contacts that match our search
+
+        //if none, can have msg letting user know, no we didnt find any contact,
+
         document.getElementById("searchResult").innerHTML =
           "User has been retrieved";
         console.log(xhr.responseText);
-        let jsonObject = JSON.parse(xhr.responseText);
       }
     };
     xhr.send(jsonPayload);
