@@ -10,7 +10,10 @@
     </head>
 
     <body>
-        <h1 id="textLogo"><a href="index.html">Leinecker's Pages</a></h1>
+        <h1 id="textLogo">Leinecker's Pages</a></h1>
+        <button id="logOut">
+            Logout
+        </button>
 
         <div class="searchSection">
             <div class="searchBar">
@@ -30,12 +33,12 @@
                 </button>
             </div>
         </div>
-
+<!--not sure hwo it will be going forward however the onclick = open# attributes may cause issues if there is also an eventlistener in code.js-->
 
 
         <div id="overlay">
             <div id="entireContactSection">
-                <span class="closeForm" onclick="closeAddContactForm()" aria-label="close">&times;</span>
+                <span class="closeForm" aria-label="close">&times;</span>
               <form id="addContactForm" class="form">
                 <h1 class="formLabel">Add Contact</h1>
                 <div class="inputForms">
@@ -47,7 +50,7 @@
                 
                     <input type="text" placeholder="Enter email" name="email" id="cEmail" required>
     
-                    <button type="button" class="button" id="addButton">Add</button>
+                    <button type="button" class="button" id="addButton" onclick="doAddContact()">Add</button>
                 <span class="text" id="addResult"></span>
                 </div>
     
@@ -58,12 +61,8 @@
         </div>
     
         <div class="contactCards">
-            <div class="singleCard">
-                <div class="singleCardInfo">
-    
-                </div>
-            </div>
-           </div>
+           
+        </div> 
         
 
 
