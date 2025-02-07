@@ -275,10 +275,10 @@ function addRow(jsonPayload) {
 
   //if we;re missing any info frm the server
   if (
-    !contactJSON.FirstName ||
-    !contactJSON.LastName ||
-    !contactJSON.Phone ||
-    !contactJSON.Email
+    !contactJSON.firstName ||
+    !contactJSON.lastName ||
+    !contactJSON.phone ||
+    !contactJSON.email
   ) {
     console.error("Missing required information:", contactJSON);
     return;
@@ -298,13 +298,13 @@ function addRow(jsonPayload) {
   //actual html for the card info
   const contactInfo = `
        <div class="contactName">
-          <h3 data-firstname="${contactJSON.FirstName}" data-lastname="${contactJSON.LastName}">
-                ${contactJSON.FirstName} ${contactJSON.LastName}
+          <h3 data-firstname="${contactJSON.firstName}" data-lastname="${contactJSON.lastName}">
+                ${contactJSON.firstName} ${contactJSON.lastName}
             </h3>
        </div>
        <div class="contactDetails">
-           <p><strong>Phone:</strong> ${contactJSON.Phone}</p>
-           <p><strong>Email:</strong> ${contactJSON.Email}</p>
+           <p><strong>Phone:</strong> ${contactJSON.phone}</p>
+           <p><strong>Email:</strong> ${contactJSON.email}</p>
        </div>
        <div class="cardActions">
            <button onclick="updateCard(this)" class="editBtn">Edit</button> 
@@ -363,21 +363,21 @@ function updateCard(editBtn) {
   //inner function so we can access all thes tuff from above without making a separate ftn
   const handleEdit = function () {
     const updateData = {
-      ID: card.getAttribute("ccID"),
+      id: card.getAttribute("ccID"),
       userId: userId,
-      FirstName: newFname.value,
-      LastName: newLname.value,
-      Phone: newPhone.value,
-      Email: newEmail.value,
+      firstName: newFname.value,
+      lastName: newLname.value,
+      phone: newPhone.value,
+      email: newEmail.value,
     };
 
     if (
       //reemmber my note abt the casing of the js object... also this is just the same logic/code from login, register, add
       !validateAdd(
-        updateData.FirstName,
-        updateData.LastName,
-        updateData.Phone,
-        updateData.Email
+        updateData.firstName,
+        updateData.lastName,
+        updateData.phone,
+        updateData.email
       )
     ) {
       return;
@@ -404,12 +404,12 @@ function updateCard(editBtn) {
           // ALL  the stuff inside the xhr.onreadystatechange does NOT happen until the server processes
           //the sent request ("xhr.send(jsonPayload);")
           //so dont let the ordering confuse u
-          nameElement.textContent = `${updateData.FirstName} ${updateData.LastName}`;
-          nameElement.setAttribute("data-firstname", updateData.FirstName);
-          nameElement.setAttribute("data-lastname", updateData.LastName);
-          phoneElement.innerHTML = `<strong>Phone:</strong> ${updateData.Phone}`; //i kept inner html cuz i had <strong> but this
+          nameElement.textContent = `${updateData.firstName} ${updateData.lastName}`;
+          nameElement.setAttribute("data-firstname", updateData.firstName);
+          nameElement.setAttribute("data-lastname", updateData.lastName);
+          phoneElement.innerHTML = `<strong>Phone:</strong> ${updateData.phone}`; //i kept inner html cuz i had <strong> but this
           //can be removed once styles.css styles this stuff
-          emailElement.innerHTML = `<strong>Email:</strong> ${updateData.Email}`;
+          emailElement.innerHTML = `<strong>Email:</strong> ${updateData.email}`;
 
           document.getElementById("addResult").innerHTML =
             "Contact successfully updated";
