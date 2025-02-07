@@ -582,10 +582,7 @@ const doSearch = _.debounce(function () {
         }
 
         // report info
-        if (numResults > 0) {
-          document.getElementById("searchResult").innerHTML =
-            "User(s) have been retrieved";
-        } else {
+        if (numResults === 0) {   
           document.getElementById("searchResult").innerHTML =
             "Unable to find a user matching the search string.";
         }
