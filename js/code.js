@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("logOut").addEventListener("click", function () {
       window.location.href = "http://www.leineckerspages.xyz/index.html";
     });
+    document.getElementById("addButton").addEventListener("click", doAddContact);
   }
   const isLoginPage = document.querySelector(".content") !== null;
   if (isLoginPage) {
