@@ -1,9 +1,14 @@
+import _ from "lodash";
+
 const urlBase = "http://leineckerspages.xyz/LAMPAPI";
 const extension = "php";
 let userId = 0;
 let firstName = "";
 let lastName = "";
 
+//let contactCache = [];
+//let lastFetchTime = 0;
+//const CACHE_DURATION = 60000;
 // document.getElementById("addUserButton").addEventListener("click", openAddContactForm);
 
 //this set of code initializes event listeners
@@ -17,6 +22,13 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("logOut").addEventListener("click", function () {
     window.location.href = "http://www.leineckerspages.xyz/index.html";
   });
+
+  //event listener for the "X" button on the addcontact form. should probaly put this in a ftn but its not necssary ..
+  document
+    .querySelector(".closeForm")
+    .addEventListener("click", closeAddContactForm);
+
+  document.getElementById("searchInput")?.addEventListener("input", doSearch);
 });
 
 function doLogin() {
@@ -188,10 +200,6 @@ function closeAddContactForm() {
   document.getElementById("overlay").style.display = "none";
   document.getElementById("entireContactSection").style.display = "none";
 }
-//event listener for the "X" button on the addcontact form. should probaly put this in a ftn but its not necssary ..
-document
-  .querySelector(".closeForm")
-  .addEventListener("click", closeAddContactForm);
 
 //adding a new contact to our db
 function doAddContact() {
@@ -492,8 +500,8 @@ function deleteCard(deleteBtn) {
     userId: userId,
     firstName: card.getAttribute("fname"),
     lastName: card.getAttribute("lname"),
-    id: card.getAttribute("ccID")
-  }
+    id: card.getAttribute("ccID"),
+  };
 
   let jsonPayload = JSON.stringify(tmp);
   console.log(jsonPayload);
@@ -516,7 +524,7 @@ function deleteCard(deleteBtn) {
         console.log("Parsed JSON:", jsonObject); //parsed JSON
 
         // clear the card
-        card.innerHTML = '';
+        card.innerHTML = "";
       }
     };
     xhr.send(jsonPayload);
@@ -525,10 +533,13 @@ function deleteCard(deleteBtn) {
   }
 }
 
-function doSearch() {
+const doSearch = _.debounce(function () {
   readCookie();
   let searchString = document.getElementById("searchInput").value;
-  if (searchString == "") return;
+  if (searchString == "") {
+    loadContacts();
+    return;
+  }
 
   let tmp = {
     search: searchString,
@@ -552,8 +563,8 @@ function doSearch() {
 
         // 1. clear the guys
         // uhhhhhh
-        const cards = document.querySelector(".contactCards"); 
-        cards.innerHTML = '';
+        const cards = document.querySelector(".contactCards");
+        cards.innerHTML = "";
 
         // 2. display the matching guys
         let numResults = 0; // number of search results retrieved
@@ -570,10 +581,10 @@ function doSearch() {
         // report info
         if (numResults > 0) {
           document.getElementById("searchResult").innerHTML =
-          "User(s) have been retrieved";
+            "User(s) have been retrieved";
         } else {
           document.getElementById("searchResult").innerHTML =
-          "Unable to find a user matching the search string.";
+            "Unable to find a user matching the search string.";
         }
 
         console.log(xhr.responseText);
@@ -583,7 +594,7 @@ function doSearch() {
   } catch (err) {
     document.getElementById("searchResult").innerHTML = err.message;
   }
-}
+}, 300);
 
 //validation functions
 function validateRegister(firstName, lastName, userName, password) {
@@ -672,6 +683,7 @@ function validateAdd(firstName, lastName, phone, email) {
 //validate login
 function validLoginForm(loginUser, loginPass) {}
 
+/*
 doFlowerAnimation();
 {
   var falling = true;
@@ -788,3 +800,4 @@ doFlowerAnimation();
     return min + Math.random() * (max - min);
   }
 }
+*/
