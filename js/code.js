@@ -365,7 +365,7 @@ function updateCard(editBtn) {
   const handleEdit = function () {
     const updateData = {
       id: card.getAttribute("ccID"),
-      userId: userId,
+    //  userId: userId,
       firstName: newFname.value,
       lastName: newLname.value,
       phone: newPhone.value,
