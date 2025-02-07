@@ -10,13 +10,16 @@
 <body>
     <div class="content">
         <h1 id="textLogo"><a href="index.html">Leinecker's Pages</a></h1>
-        <h2 id="textLogo"><b href="index.html">A contact manager for your blooming connections</b></h2>
-        
+        <h2 id="textLogo"><b href="index.html">A contact manager</b></h2>
+        <h2 id="textLogo"><c href="index.html">for your</c></h2>
+        <h2 id="textLogo"><d href="index.html">blooming</d></h2>
+        <h2 id="textLogo"><e href="index.html">connections</e></h2>
+
         <!--login formn-->
 
-        <form id="loginForm" class="form">
+        <form id="loginForm" class="formLogin">
             <img src="/images/leineckersLogo.png" alt="Leinecker's Pages Logo" class="form-logo">
-            <button type="button" class="buttonLogo" id="flowerAnimation" onclick="doFlowerAnimation()"></button>
+            <button type="button" class="buttonLogo" id="flowerAnimation" onclick="doFlowerAnimation()">hello</button>
             <div id="container">
                 <!-- animation -->
             </div>
@@ -27,7 +30,7 @@
         
                 <input type="password" placeholder="Enter password" name="password" id="loginPassword" required>
                 
-                <button type="button" class="button" id="loginButton">Login</button>
+                <button type="button" class="button" id="loginButton" onclick="doLogin()">Login</button>
 
             <p><a href="#" id="hideLogin"> New? Sign up here.</a></p>
             <span class="text" id="loginResult"></span>
@@ -56,10 +59,8 @@
             <span class="text" id="signupResult"></span>
         </form>
 
-        <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
         <script src="js/md5.js"></script>
         <script src="js/code.js"></script>
-        
     </div>
 </body>
 </html>
