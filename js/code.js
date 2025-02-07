@@ -171,6 +171,8 @@ function readCookie() {
     }
   }
 
+  console.log("USERID READ COOKIE: " + userId);
+
   if (userId < 0) {
     window.location.href = "index.html";
   }
@@ -503,14 +505,37 @@ function doSearch() {
   try {
     xhr.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
+        console.log("API Response:", xhr.responseText);
+
         let jsonObject = JSON.parse(xhr.responseText);
-        //1. clear all the contacts we're seeing now , like that entire display.
-        //then check whether any contacts were retrieved and display the contacts that match our search
+        console.log("Parsed JSON:", jsonObject);
 
-        //if none, can have msg letting user know, no we didnt find any contact,
+        // 1. clear the guys
+        // uhhhhhh
+        const cards = document.querySelector(".contactCards"); 
+        cards.innerHTML = '';
 
-        document.getElementById("searchResult").innerHTML =
-          "User has been retrieved";
+        // 2. display the matching guys
+        let numResults = 0; // number of search results retrieved
+        // this is for checking if we got any so we can msg if we didn't
+
+        // add rows for the results that the search applies to
+        // TODO: the forEach seems bugged when nothing is returned(?)
+        jsonObject.results.forEach((contact) => {
+          numResults++;
+          console.log("Contact Data:", contact);
+          addRow(JSON.stringify(contact));
+        });
+
+        // report info
+        if (numResults > 0) {
+          document.getElementById("searchResult").innerHTML =
+          "User(s) have been retrieved";
+        } else {
+          document.getElementById("searchResult").innerHTML =
+          "Unable to find a user matching the search string.";
+        }
+
         console.log(xhr.responseText);
       }
     };
