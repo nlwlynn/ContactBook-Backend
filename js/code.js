@@ -315,12 +315,12 @@ function addRow(jsonPayload) {
   //Change the HTML content of an element with id="demo":  https://www.w3schools.com/Jsref/prop_html_innerhtml.asp
   singleCardInfo.innerHTML = contactInfo; //in other words setting the inner html of the stuff in the contaiber
 
-  // I am adding this because its too annoying to figure out how to get the first and last names from the html - Brian
-  singleCard.setAttribute("fname", contactJSON.FirstName);
-  singleCard.setAttribute("lname", contactJSON.LastName);
+  // // I am adding this because its too annoying to figure out how to get the first and last names from the html - Brian
+  // singleCard.setAttribute("fname", contactJSON.FirstName);
+  // singleCard.setAttribute("lname", contactJSON.LastName);
 
   //append to existing card(s) (they will be in a list formatting iirc)
-  singleCard.setAttribute("ccID", contactJSON.ID); //add unique id that we'll be using in updateCard and delete as well
+  singleCard.setAttribute("ccID", contactJSON.id); //add unique id that we'll be using in updateCard and delete as well
   singleCard.appendChild(singleCardInfo); //actually adding to the div w cards, first the card info
   cards.appendChild(singleCard); //then the entire card.
   // they have to be added in this hierarchy so that the card is sturctured properly (not incomplete or empty). inner elements, then outer
@@ -490,12 +490,13 @@ function loadContacts() {
 function deleteCard(deleteBtn) {
   // find button parent
   const card = deleteBtn.closest(".singleCard");
+  const nameElement = card.querySelector(".contactName h3");
 
   // jsonning
   let tmp = {
     userId: userId,
-    firstName: card.getAttribute("fname"),
-    lastName: card.getAttribute("lname"),
+    firstName: nameElement.getAttribute("data-firstname"),
+    lastName: nameElement.getAttribute("data-lastname"),
     id: card.getAttribute("ccID"),
   };
 
