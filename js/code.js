@@ -304,6 +304,10 @@ function addRow(jsonPayload) {
   //Change the HTML content of an element with id="demo":  https://www.w3schools.com/Jsref/prop_html_innerhtml.asp
   singleCardInfo.innerHTML = contactInfo; //in other words setting the inner html of the stuff in the contaiber
 
+  // I am adding this because its too annoying to figure out how to get the first and last names from the html - Brian
+  singleCard.setAttribute("fname", contactJSON.FirstName);
+  singleCard.setAttribute("lname", contactJSON.LastName);
+
   //append to existing card(s) (they will be in a list formatting iirc)
   singleCard.setAttribute("ccID", contactJSON.ID); //add unique id that we'll be using in updateCard and delete as well
   singleCard.appendChild(singleCardInfo); //actually adding to the div w cards, first the card info
@@ -479,10 +483,46 @@ function loadContacts() {
 }
 
 //delete
-function deleteCard() {
-  //should have a parameter. for a button , delete (can just do deleteBtn or smth similar)
-  //repeat the exact process from UPDATECARD only remove the card instead of updating it like .remove()
-  //honestly not fully sure how that will work but yea
+function deleteCard(deleteBtn) {
+  // find button parent
+  const card = deleteBtn.closest(".singleCard");
+
+  // jsonning
+  let tmp = {
+    userId: userId,
+    firstName: card.getAttribute("fname"),
+    lastName: card.getAttribute("lname"),
+    id: card.getAttribute("ccID")
+  }
+
+  let jsonPayload = JSON.stringify(tmp);
+  console.log(jsonPayload);
+  let url = urlBase + "/DeleteContact." + extension;
+
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", url, true);
+  xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+  try {
+    xhr.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log("API Response:", xhr.responseText); //raw response
+
+        let jsonObject = JSON.parse(xhr.responseText);
+        if (jsonObject.error) {
+          console.log("Failed to delete!");
+          return;
+        }
+        console.log("Parsed JSON:", jsonObject); //parsed JSON
+
+        // clear the card
+        card.innerHTML = '';
+      }
+    };
+    xhr.send(jsonPayload);
+  } catch (err) {
+    console.error("Unable to retrieve contact s", err);
+  }
 }
 
 function doSearch() {
