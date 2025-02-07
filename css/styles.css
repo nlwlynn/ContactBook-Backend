@@ -9,6 +9,7 @@ body {
   background-size: cover;
   background-attachment: fixed;
   font-family: "Fredoka", sans-serif;
+  height: 97vh;
 }
 
 #dashboard {
