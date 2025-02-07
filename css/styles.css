@@ -38,6 +38,7 @@ div.content {
     rgba(255, 255, 255, 0.773)
   );
   width: 1000px;
+  height: 900px;
   border-radius: 25px;
   display: flex;
   flex-direction: column;
@@ -45,16 +46,64 @@ div.content {
   overflow: hidden;
   margin: 10cqi;
   text-align: center;
-  container-type: inline-size;
+  /* container-type: inline-size; */
   position: center;
 }
 
+/* Leinecker's Pages */
+#textLogo a {
+  color: #221b10;
+  text-decoration: none;
+  font-size: 4rem;
+  text-shadow: 2px 2px 4px rgba(243, 189, 211, 0.8);
+  position: relative;
+  bottom: 100px;
+  left: 175px;
+}
+
+/* A contact manager */
 #textLogo b {
   color: #221b10;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 2rem;
   text-shadow: 2px 2px 4px rgba(243, 189, 211, 0.8);
   max-width: 30px;
+  position: relative;
+  /* left: 50px; */
+}
+
+/* for your */
+#textLogo c {
+  color: #221b10;
+  text-decoration: none;
+  font-size: 2rem;
+  text-shadow: 4px 4px 4px rgba(243, 189, 211, 0.8);
+  max-width: 30px;
+  position: relative;
+  /* left: 100px; */
+}
+
+/* blooming */
+#textLogo d {
+  color: #492B36;
+  text-decoration: underline;
+  font-size: 3rem;
+  /* text-shadow: 2px 2px 4px rgba(243, 189, 211, 0.8); */
+  max-width: 30px;
+  position: relative;
+  left: 70px;
+  font-style: italic;
+}
+
+/* connections */
+#textLogo e {
+  color: #221b10;
+  text-decoration: none;
+  font-size: 2rem;
+  text-shadow: 2px 2px 4px rgba(243, 189, 211, 0.8);
+  max-width: 30px;
+  position: relative;
+  /* left:70px; */
 }
 
 #textLogo {
@@ -70,12 +119,7 @@ div.content.textLogo .active {
   cursor: pointer;
 }
 
-#textLogo a {
-  color: #221b10;
-  text-decoration: none;
-  font-size: 3rem;
-  text-shadow: 2px 2px 4px rgba(243, 189, 211, 0.8);
-}
+
 
 .form {
   /*this is for the entire form container */
@@ -97,6 +141,27 @@ div.content.textLogo .active {
   text-align: center;
 }
 
+.formLogin {
+  /*this is for the entire form container */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* overflow: hidden; */
+
+  position: relative;
+  left: 200px;
+  bottom: 275px;
+
+  padding: 40px;
+  max-width: 350px;
+  height: 600px;
+  background-color: #ffc0cb;
+  border-radius: 25px;
+
+  margin: 0 auto;
+  text-align: center;
+}
+
 .formLabel {
   /*login and signup*/
   color: white;
@@ -104,7 +169,8 @@ div.content.textLogo .active {
   font-size: 40px;
   text-align: center;
   position: relative;
-  top: -20px;
+  /* top: -20px; */
+  bottom: 80px;
   left: 0px;
   margin-bottom: 0px;
 }
@@ -125,6 +191,8 @@ div.content.textLogo .active {
 }
 .inputForms {
   margin-bottom: 20px;
+  position: relative;
+  bottom: 50px;
 }
 
 .inputForms input {
@@ -147,14 +215,27 @@ input[type="password"] {
 }
 
 .buttonLogo {
-  display: inline-flex;
-  font-size: 25px;
+  /* display: inline-flex; */
+  background-color: transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor: pointer;
+  outline:none;
+  
+  padding: 40px;
+  text-align: center;
+  text-decoration: none;
+  /* display: inline-block; */
+  font-size: 16px;
+  margin: 4px 2px;
+  
+  /* font-size: 25px;
   border-radius: 25px;
   width: 100px;
   height: 100px;
   margin: 0 auto;
   color: white;
-  text-shadow: 2px 2px 4px #000000;
+  text-shadow: 2px 2px 4px #000000; */
   position: relative;
   top: -105px;
 
