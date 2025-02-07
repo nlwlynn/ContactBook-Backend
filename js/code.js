@@ -1,14 +1,9 @@
-import _ from "lodash";
-
 const urlBase = "http://leineckerspages.xyz/LAMPAPI";
 const extension = "php";
 let userId = 0;
 let firstName = "";
 let lastName = "";
 
-//let contactCache = [];
-//let lastFetchTime = 0;
-//const CACHE_DURATION = 60000;
 // document.getElementById("addUserButton").addEventListener("click", openAddContactForm);
 
 //this set of code initializes event listeners
@@ -16,19 +11,27 @@ let lastName = "";
 //one for logout just leads the user back to the login page upon clicking the button but maybe more functionalty
 //bc its not actually logging out, its just redirecting the user
 document.addEventListener("DOMContentLoaded", function () {
-  loadContacts(); //loads existing contacts from database. without this , the contacts on teh screen kept disappearing
-  document.getElementById("hideLogin").addEventListener("click", openReg);
-  document.getElementById("showLogin").addEventListener("click", closeReg);
-  document.getElementById("logOut").addEventListener("click", function () {
-    window.location.href = "http://www.leineckerspages.xyz/index.html";
-  });
+  const isContactsPage = document.querySelector(".contactCards") !== null;
 
-  //event listener for the "X" button on the addcontact form. should probaly put this in a ftn but its not necssary ..
-  document
-    .querySelector(".closeForm")
-    .addEventListener("click", closeAddContactForm);
+  if (isContactsPage) {
+    loadContacts();
 
-  document.getElementById("searchInput")?.addEventListener("input", doSearch);
+    document
+      .querySelector(".closeForm")
+      ?.addEventListener("click", closeAddContactForm);
+    //document.getElementById("searchInput")?.addEventListener("input", doSearch);
+    document.getElementById("searchInput").addEventListener("input", doSearch);
+
+    document.getElementById("logOut").addEventListener("click", function () {
+      window.location.href = "http://www.leineckerspages.xyz/index.html";
+    });
+  }
+  const isLoginPage = document.querySelector(".content") !== null;
+  if (isLoginPage) {
+    document.getElementById("loginButton").addEventListener("click", doLogin);
+    document.getElementById("hideLogin").addEventListener("click", openReg);
+    document.getElementById("showLogin").addEventListener("click", closeReg);
+  }
 });
 
 function doLogin() {
@@ -323,13 +326,6 @@ function addRow(jsonPayload) {
   // they have to be added in this hierarchy so that the card is sturctured properly (not incomplete or empty). inner elements, then outer
 }
 
-//logoout
-document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("logOut").addEventListener("click", function () {
-    window.location.href = "http://www.leineckerspages.xyz/index.html";
-  });
-});
-
 //update
 function updateCard(editBtn) {
   //see the html in addRow. this ftn is called when the edit button is clicked
@@ -534,6 +530,7 @@ function deleteCard(deleteBtn) {
 }
 
 const doSearch = _.debounce(function () {
+  //contaisn the constant searches that were
   readCookie();
   let searchString = document.getElementById("searchInput").value;
   if (searchString == "") {
@@ -572,11 +569,15 @@ const doSearch = _.debounce(function () {
 
         // add rows for the results that the search applies to
         // TODO: the forEach seems bugged when nothing is returned(?)
-        jsonObject.results.forEach((contact) => {
-          numResults++;
-          console.log("Contact Data:", contact);
-          addRow(JSON.stringify(contact));
-        });
+        if (jsonObject.results) {
+          jsonObject.results.forEach((contact) => {
+            numResults++;
+            console.log("Contact Data:", contact);
+            addRow(JSON.stringify(contact));
+          });
+        } else {
+          //tell user no contacts
+        }
 
         // report info
         if (numResults > 0) {
