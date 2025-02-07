@@ -489,6 +489,7 @@ function loadContacts() {
 
 //delete
 function deleteCard(deleteBtn) {
+  if (!confirm("Are you sure you would like to delete this contact?")) return;
   // find button parent
   const card = deleteBtn.closest(".singleCard");
   const nameElement = card.querySelector(".contactName h3");
