@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
 
 body {
   background-image: url("/images/poosdSiteBG.jpg");
@@ -8,7 +8,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  font-family: "Fredoka", sans-serif;
+  font-family: "Cormorant", garamond;
   height: 97vh;
 }
 
@@ -32,14 +32,14 @@ body {
 }
 
 div.content {
-  /* background:  rgb(113, 42, 113); */
-  background: linear-gradient(
+  background:  lightblue;
+  /* background: linear-gradient(
     to right,
     rgb(243, 189, 211) 10%,
     rgba(255, 255, 255, 0.773)
-  );
+  ); */
   width: 1000px;
-  height: 1100px;
+  height: 700px;
   border-radius: 25px;
   display: flex;
   flex-direction: column;
@@ -48,7 +48,9 @@ div.content {
   margin: 10cqi;
   text-align: center;
   /* container-type: inline-size; */
-  position: center;
+  position: relative;
+  bottom: 100px;
+
 }
 
 /* Leinecker's Pages */
@@ -58,7 +60,7 @@ div.content {
   font-size: 4rem;
   text-shadow: 2px 2px 4px rgba(243, 189, 211, 0.8);
   position: relative;
-  bottom: 100px;
+  bottom: 150px;
   left: 175px;
 }
 
@@ -70,7 +72,7 @@ div.content {
   text-shadow: 2px 2px 4px rgba(243, 189, 211, 0.8);
   max-width: 30px;
   position: relative;
-  /* left: 50px; */
+  bottom: 100px; 
 }
 
 /* for your */
@@ -81,7 +83,7 @@ div.content {
   text-shadow: 4px 4px 4px rgba(243, 189, 211, 0.8);
   max-width: 30px;
   position: relative;
-  /* left: 100px; */
+  bottom: 100px; 
 }
 
 /* blooming */
@@ -94,6 +96,7 @@ div.content {
   position: relative;
   left: 70px;
   font-style: italic;
+  bottom: 100px;
 }
 
 /* connections */
@@ -104,7 +107,7 @@ div.content {
   text-shadow: 2px 2px 4px rgba(243, 189, 211, 0.8);
   max-width: 30px;
   position: relative;
-  /* left:70px; */
+  bottom: 100px; 
 }
 
 #textLogo {
@@ -151,12 +154,16 @@ div.content.textLogo .active {
 
   position: relative;
   left: 200px;
-  bottom: 275px;
+  bottom: 330px;
 
   padding: 40px;
-  max-width: 350px;
-  height: 800px;
-  background-color: #ffc0cb;
+  max-width: 300px;
+  height: 400px;
+  background: linear-gradient(
+    rgb(243, 189, 211) 10%,
+    rgba(255, 255, 255, 0.773)
+  );
+  /* background-color: #F2F0EF; */
   border-radius: 25px;
 
   margin: 0 auto;
@@ -167,11 +174,11 @@ div.content.textLogo .active {
   /*login and signup*/
   color: white;
   text-shadow: 2px 2px 4px #000000;
-  font-size: 40px;
+  font-size: 30px;
   text-align: center;
   position: relative;
   /* top: -20px; */
-  bottom: 80px;
+  bottom: 120px;
   left: 0px;
   margin-bottom: 0px;
 }
@@ -211,9 +218,13 @@ div.content.textLogo .active {
 }
 
 .inputForms input {
-  font-size: 30px;
+  font-size: 20px;
 }
 
+#loginForm input{
+  position: relative;
+  bottom: 50px;
+}
 input[type="text"],
 input[type="password"] {
   border-radius: 40px;
@@ -222,7 +233,7 @@ input[type="password"] {
   margin-left: 5%;
   margin-bottom: 13%;
   background: rgba(255, 255, 255, 0.5);
-  padding: 20px;
+  padding: 10px;
 }
 
 #registerForm {
@@ -302,6 +313,11 @@ body,
   transform: translateY(4px);
 }
 
+#loginButton {
+  position: relative;
+  bottom: 50px;
+}
+
 .button {
   display: block;
   font-size: 25px;
@@ -331,6 +347,8 @@ body,
   text-decoration: none;
   font-size: 20px;
   text-shadow: 2px 2px 4px rgba(24, 24, 24, 0.1);
+  position: relative;
+  bottom: 50px;
 }
 
 #showLogin {
