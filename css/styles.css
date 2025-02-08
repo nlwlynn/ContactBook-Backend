@@ -4,6 +4,7 @@ body {
   background-image: url("/images/poosdSiteBG.jpg");
   /*got thei mage from ucf's mediagraph page but i think we may have to change it since we need to request access to download and i did Not do that.*/
   /*https://mediagraph.io/ucf/explore/collections/arboretum#/assets/10589b33-c31c-4dc0-8446-c4c9d4e43faf*/
+  /* opacity: 0.5; */
   background-color: lightblue;
   background-repeat: no-repeat;
   background-size: cover;
@@ -12,8 +13,13 @@ body {
   height: 97vh;
 }
 
-#dashboard {
-  background-image: url("/images/dashboard.jpg");
+div.background {
+  background:  rgba(255, 255, 255, 0.1);
+  height: 100%;
+  width: 100%;
+  /* position: fixed; */
+  top: 0px;
+  left: 0px;
 }
 
 #textLogoDashboard a {
@@ -32,14 +38,15 @@ body {
 }
 
 div.content {
-  background:  lightblue;
-  /* background: linear-gradient(
+  /* background:  lightblue; */
+  background: linear-gradient(
     to right,
-    rgb(243, 189, 211) 10%,
+    lightblue 10%,
+    /* rgb(243, 189, 211) 10%, */
     rgba(255, 255, 255, 0.773)
-  ); */
+  );
   width: 1000px;
-  height: 700px;
+  height: 800px;
   border-radius: 25px;
   display: flex;
   flex-direction: column;
@@ -58,7 +65,7 @@ div.content {
   color: #221b10;
   text-decoration: none;
   font-size: 4rem;
-  text-shadow: 2px 2px 4px rgba(243, 189, 211, 0.8);
+  /* text-shadow: 2px 2px 4px rgba(243, 189, 211, 0.8); */
   position: relative;
   bottom: 150px;
   left: 175px;
@@ -69,9 +76,10 @@ div.content {
   color: #221b10;
   text-decoration: none;
   font-size: 2rem;
-  text-shadow: 2px 2px 4px rgba(243, 189, 211, 0.8);
+  /* text-shadow: 2px 2px 4px rgba(243, 189, 211, 0.8); */
   max-width: 30px;
   position: relative;
+  left: 30px;
   bottom: 100px; 
 }
 
@@ -80,9 +88,10 @@ div.content {
   color: #221b10;
   text-decoration: none;
   font-size: 2rem;
-  text-shadow: 4px 4px 4px rgba(243, 189, 211, 0.8);
+  /* text-shadow: 4px 4px 4px rgba(243, 189, 211, 0.8); */
   max-width: 30px;
   position: relative;
+  left: 30px;
   bottom: 100px; 
 }
 
@@ -94,7 +103,7 @@ div.content {
   /* text-shadow: 2px 2px 4px rgba(243, 189, 211, 0.8); */
   max-width: 30px;
   position: relative;
-  left: 70px;
+  left: 100px;
   font-style: italic;
   bottom: 100px;
 }
@@ -104,9 +113,10 @@ div.content {
   color: #221b10;
   text-decoration: none;
   font-size: 2rem;
-  text-shadow: 2px 2px 4px rgba(243, 189, 211, 0.8);
+  /* text-shadow: 2px 2px 4px rgba(243, 189, 211, 0.8); */
   max-width: 30px;
   position: relative;
+  left: 30px;
   bottom: 100px; 
 }
 
@@ -145,6 +155,31 @@ div.content.textLogo .active {
   text-align: center;
 }
 
+.formRegister {
+  /*this is for the entire form container */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* overflow: hidden; */
+
+  position: relative;
+  left: 200px;
+  bottom: 330px;
+
+  padding: 40px;
+  max-width: 300px;
+  height: 600px;
+  /* background: linear-gradient(
+    rgb(243, 189, 211),
+    rgb(255, 255, 255)
+  ); */
+  background-color: rgb(243, 189, 211);
+  border-radius: 25px;
+
+  margin: 0 auto;
+  text-align: center;
+}
+
 .formLogin {
   /*this is for the entire form container */
   display: flex;
@@ -159,16 +194,18 @@ div.content.textLogo .active {
   padding: 40px;
   max-width: 300px;
   height: 400px;
-  background: linear-gradient(
-    rgb(243, 189, 211) 10%,
-    rgba(255, 255, 255, 0.773)
-  );
-  /* background-color: #F2F0EF; */
+  /* background: linear-gradient(
+    rgb(243, 189, 211),
+    rgb(255, 255, 255)
+  ); */
+  background-color: rgb(243, 189, 211);
   border-radius: 25px;
 
   margin: 0 auto;
   text-align: center;
 }
+
+
 
 .formLabel {
   /*login and signup*/
@@ -224,6 +261,11 @@ div.content.textLogo .active {
 #loginForm input{
   position: relative;
   bottom: 50px;
+}
+
+#registerForm input{
+  position: relative;
+  top: 70px;
 }
 input[type="text"],
 input[type="password"] {
@@ -321,6 +363,7 @@ body,
 .button {
   display: block;
   font-size: 25px;
+  font-family: "Cormorant", garamond;
   border-radius: 25px;
   width: 50%;
   margin: 0 auto;
