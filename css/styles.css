@@ -9,7 +9,7 @@ body {
   font-family: "Cormorant", garamond;
   height: 97vh;
 }
-body::before {
+body:not(.dashboard):before {
   content: "";
   position: fixed;
   top: 0;
@@ -21,7 +21,7 @@ body::before {
   pointer-events: none;
 }
 
-body::after {
+body:not(.dashboard):after {
   content: "";
   position: fixed;
   top: 0;
@@ -476,7 +476,6 @@ body.dashboard {
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
 #logOut {
   position: absolute;
   top: 1rem;
