@@ -419,7 +419,7 @@ body,
 
 body.dashboard {
   background-image: none;
-  background-color: linear-gradient(
+  background: linear-gradient(
     135deg,
     #f2e6e8 0%,
     #f2e6e8 85%,
@@ -429,16 +429,22 @@ body.dashboard {
   min-height: 100vh;
   color: #2d232e;
   position: relative;
-  height: auto;
 }
+.dashboard h1 {
+  background-color: #9f86c0;
+  padding: 1rem;
+  margin: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
 .dashboard #textLogo {
   color: #2d232e;
   text-decoration: none;
   font-size: 2.5rem;
   text-align: center;
-  padding: 1rem;
-  margin: 0;
-  background-color: #e8c1c5;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
