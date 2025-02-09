@@ -539,7 +539,7 @@ function deleteCard(deleteBtn) {
         console.log("Parsed JSON:", jsonObject); //parsed JSON
 
         // clear the card
-        card.innerHTML = "";
+        card.remove();
       }
     };
     xhr.send(jsonPayload);
