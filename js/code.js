@@ -23,6 +23,17 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("searchInput").addEventListener("input", doSearch);
 
     document.getElementById("logOut").addEventListener("click", function () {
+      // Logout process
+      // clear user session data
+      userId = 0;
+      firstName = "";
+      lastName = "";
+      // clear cookies
+      document.cookie = "userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      document.cookie = "firstName=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      document.cookie = "lastName=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      
+      // redirect to login page
       window.location.href = "http://www.leineckerspages.xyz/index.html";
     });
     document.getElementById("addButton").addEventListener("click", doAddContact);
@@ -684,16 +695,16 @@ function validateAdd(firstName, lastName, phone, email) {
 //validate login
 function validLoginForm(loginUser, loginPass) {}
 
-/*
+
 doFlowerAnimation();
 {
   var falling = true;
 
-  TweenLite.set("#container", { perspective: 600 });
+  TweenLite.set("#background", { perspective: 600 });
   //TweenLite.set("img",{xPercent:"-50%",yPercent:"-50%"})
 
   var total = 10;
-  var container = document.getElementById("container"),
+  var container = document.getElementById("background"),
     w = window.innerWidth,
     h = window.innerHeight;
 
@@ -801,4 +812,4 @@ doFlowerAnimation();
     return min + Math.random() * (max - min);
   }
 }
-*/
+
