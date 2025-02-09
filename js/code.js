@@ -583,25 +583,13 @@ const doSearch = _.debounce(function () {
         cards.innerHTML = "";
 
         // 2. display the matching guys
-        let numResults = 0; // number of search results retrieved
-        // this is for checking if we got any so we can msg if we didn't
 
         // add rows for the results that the search applies to
-        // TODO: the forEach seems bugged when nothing is returned(?)
         if (jsonObject.results) {
           jsonObject.results.forEach((contact) => {
-            numResults++;
             console.log("Contact Data:", contact);
             addRow(JSON.stringify(contact));
           });
-        } else {
-          //tell user no contacts
-        }
-
-        // report info
-        if (numResults === 0) {
-          document.getElementById("searchResult").innerHTML =
-            "Unable to find a user matching the search string.";
         }
 
         console.log(xhr.responseText);
