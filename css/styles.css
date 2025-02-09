@@ -78,6 +78,16 @@ div.content {
   bottom: 100px;
 }
 
+.PNGlogo {
+  position: absolute;
+  left: 160px;
+  top: 10%;
+  transform: translateY(-50%);
+  width: 90px;
+  height: 90px;
+  z-index: 1;
+}
+
 /* Leinecker's Pages */
 #textLogo a {
   color: #221b10;
