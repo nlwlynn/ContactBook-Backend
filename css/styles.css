@@ -1,16 +1,40 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
 
 body {
-  background-image: url("/images/poosdSiteBG.jpg");
-  /*got thei mage from ucf's mediagraph page but i think we may have to change it since we need to request access to download and i did Not do that.*/
   /*https://mediagraph.io/ucf/explore/collections/arboretum#/assets/10589b33-c31c-4dc0-8446-c4c9d4e43faf*/
-  /* opacity: 0.5; */
-  background-color: lightblue;
+  background-color: #a2d2ff;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   font-family: "Cormorant", garamond;
   height: 97vh;
+}
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #a2d2ff 60%, #ffc0cb 100%); /*e8c1c5*/
+  z-index: 0;
+  pointer-events: none;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100vh;
+  background-image: url("/images/newBG.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right top;
+  z-index: 1;
+  opacity: 0.9;
+  pointer-events: none;
 }
 
 div.background {
@@ -39,11 +63,7 @@ div.background {
 
 div.content {
   /* background:  lightblue; */
-  background: linear-gradient(
-    to right,
-    lightblue 10%,
-    /* rgb(243, 189, 211) 10%, */ rgba(255, 255, 255, 0.773)
-  );
+  background: linear-gradient(to top, #fff 10%, #a2d2ff);
   width: 1000px;
   height: 800px;
   border-radius: 25px;
@@ -171,12 +191,13 @@ div.content.textLogo .active {
   ); */
   background-color: rgb(243, 189, 211);
   border-radius: 25px;
-
+  box-shadow: 0 0 5px #000000; /*horizontla offset, vertical offset, blur radius, color*/
   margin: 0 auto;
   text-align: center;
 }
 
 .formLogin {
+  box-shadow: 0 0 5px #000000;
   /*this is for the entire form container */
   display: flex;
   flex-direction: column;
