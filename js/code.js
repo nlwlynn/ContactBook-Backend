@@ -29,14 +29,19 @@ document.addEventListener("DOMContentLoaded", function () {
       firstName = "";
       lastName = "";
       // clear cookies
-      document.cookie = "userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-      document.cookie = "firstName=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-      document.cookie = "lastName=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-      
+      document.cookie =
+        "userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      document.cookie =
+        "firstName=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      document.cookie =
+        "lastName=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
       // redirect to login page
-      window.location.href = "http://www.leineckerspages.xyz/index.html";
+      window.location.href = "http://leineckerspages.xyz/index.html";
     });
-    document.getElementById("addButton").addEventListener("click", doAddContact);
+    document
+      .getElementById("addButton")
+      .addEventListener("click", doAddContact);
   }
   const isLoginPage = document.querySelector(".content") !== null;
   if (isLoginPage) {
@@ -376,7 +381,7 @@ function updateCard(editBtn) {
   const handleEdit = function () {
     const updateData = {
       id: card.getAttribute("ccID"),
-    //  userId: userId,
+      //  userId: userId,
       firstName: newFname.value,
       lastName: newLname.value,
       phone: newPhone.value,
@@ -594,7 +599,7 @@ const doSearch = _.debounce(function () {
         }
 
         // report info
-        if (numResults === 0) {   
+        if (numResults === 0) {
           document.getElementById("searchResult").innerHTML =
             "Unable to find a user matching the search string.";
         }
@@ -694,7 +699,6 @@ function validateAdd(firstName, lastName, phone, email) {
 
 //validate login
 function validLoginForm(loginUser, loginPass) {}
-
 
 doFlowerAnimation();
 {
@@ -812,4 +816,3 @@ doFlowerAnimation();
     return min + Math.random() * (max - min);
   }
 }
-

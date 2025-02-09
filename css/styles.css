@@ -14,7 +14,7 @@ body {
 }
 
 div.background {
-  background:  rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1);
   height: 100%;
   width: 100%;
   /* position: fixed; */
@@ -42,8 +42,7 @@ div.content {
   background: linear-gradient(
     to right,
     lightblue 10%,
-    /* rgb(243, 189, 211) 10%, */
-    rgba(255, 255, 255, 0.773)
+    /* rgb(243, 189, 211) 10%, */ rgba(255, 255, 255, 0.773)
   );
   width: 1000px;
   height: 800px;
@@ -57,7 +56,6 @@ div.content {
   /* container-type: inline-size; */
   position: relative;
   bottom: 100px;
-
 }
 
 /* Leinecker's Pages */
@@ -80,7 +78,7 @@ div.content {
   max-width: 30px;
   position: relative;
   left: 30px;
-  bottom: 100px; 
+  bottom: 100px;
 }
 
 /* for your */
@@ -92,12 +90,12 @@ div.content {
   max-width: 30px;
   position: relative;
   left: 30px;
-  bottom: 100px; 
+  bottom: 100px;
 }
 
 /* blooming */
 #textLogo d {
-  color: #492B36;
+  color: #492b36;
   text-decoration: underline;
   font-size: 3rem;
   /* text-shadow: 2px 2px 4px rgba(243, 189, 211, 0.8); */
@@ -117,7 +115,7 @@ div.content {
   max-width: 30px;
   position: relative;
   left: 30px;
-  bottom: 100px; 
+  bottom: 100px;
 }
 
 #textLogo {
@@ -132,8 +130,6 @@ div.content.textLogo .active {
   pointer-events: none;
   cursor: pointer;
 }
-
-
 
 .form {
   /*this is for the entire form container */
@@ -205,8 +201,6 @@ div.content.textLogo .active {
   text-align: center;
 }
 
-
-
 .formLabel {
   /*login and signup*/
   color: white;
@@ -258,12 +252,12 @@ div.content.textLogo .active {
   font-size: 20px;
 }
 
-#loginForm input{
+#loginForm input {
   position: relative;
   bottom: 50px;
 }
 
-#registerForm input{
+#registerForm input {
   position: relative;
   top: 70px;
 }
@@ -285,18 +279,18 @@ input[type="password"] {
 .buttonLogo {
   /* display: inline-flex; */
   background-color: transparent;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   border: none;
   cursor: pointer;
-  outline:none;
-  
+  outline: none;
+
   padding: 40px;
   text-align: center;
   text-decoration: none;
   /* display: inline-block; */
   font-size: 16px;
   margin: 4px 2px;
-  
+
   position: relative;
   top: -105px;
 
@@ -422,21 +416,54 @@ body,
 }
 
 /*search button and add user button*/
+
+body.dashboard {
+  background-image: none;
+  background-color: linear-gradient(
+    135deg,
+    #f2e6e8 0%,
+    #f2e6e8 85%,
+    rgba(74, 144, 226, 0.1) 100%
+  );
+  margin: 0;
+  min-height: 100vh;
+  color: #2d232e;
+  position: relative;
+  height: auto;
+}
+.dashboard #textLogo {
+  color: #2d232e;
+  text-decoration: none;
+  font-size: 2.5rem;
+  text-align: center;
+  padding: 1rem;
+  margin: 0;
+  background-color: #e8c1c5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#logOut {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #7b4b94;
+  color: #f5e6e8;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Cormorant", garamond;
+  font-size: 1.1rem;
+}
+
+.dashboard #logOut:hover {
+  background-color: #9f86c0;
+}
+
 .actions {
   display: flex;
   gap: 10px;
-}
-.searchButton {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: none;
-  background-color: white;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform: translateY(-98%);
 }
 
 #addUserButton {
@@ -464,8 +491,12 @@ body,
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
 }
+
 #entireContactSection {
   position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 2rem;
 }
 
 /*x button*/
@@ -484,11 +515,51 @@ body,
 }
 
 .contactCards {
-  background-color: pink;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  margin: 0 auto;
+  max-width: 1200px;
 }
 
-#logOut {
-  background-color: pink;
+.contactCards > div {
+  background: linear-gradient(135deg, #9f86c0, #e8c1c5);
+  border-radius: 15px;
+  padding: 2rem;
+  position: relative;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+.contactCards > div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+
+  border-color: rgba(245, 166, 35, 0.2);
+}
+.contactCards > div::before {
+  content: "";
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 40px;
+  height: 40px;
+  background-image: url("/images/leineckersLogo.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+  pointer-events: none;
+  animation: gentleFloat 6s ease-in-out infinite;
+}
+
+@keyframes gentleFloat {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
 }
 /*table*/
 
