@@ -267,6 +267,8 @@ function doAddContact() {
         document.getElementById("cPhoneNumber").value = "";
         document.getElementById("cEmail").value = "";
 
+        document.getElementById("addResult").innerHTML =
+          "";
         //displays the newly made contact card
         addRow(jsonPayload);
         //saveCookie();
