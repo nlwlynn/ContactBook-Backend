@@ -431,9 +431,8 @@ function updateCard(editBtn) {
           document.getElementById("addResult").innerHTML =
             "Contact successfully updated";
 
-            document.getElementById("addResult").innerHTML =
-          "";
-
+            
+/*
           //now that we're done using the addContact-form-turned-edit-form, we put things back where we found them
           //by changing the form title back, changing the save changes button back to add button, clearing the input sfields, etc.
           document.getElementById("overlay").style.display = "none";
@@ -446,7 +445,7 @@ function updateCard(editBtn) {
 
           //also restoring the og event handling so we can use it to add contacts
           addButton.removeEventListener("click", handleEdit);
-          addButton.addEventListener("click", doAddContact);
+          addButton.addEventListener("click", doAddContact); */
         }
       };
       xhr.send(jsonPayload);
