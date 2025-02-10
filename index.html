@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
     <meta name = "description" content = "Contact Manager">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <script src="js/code.js" defer></script>
 </head>
 
 <body>
@@ -23,7 +25,7 @@
 
         <form id="loginForm" class="formLogin">
             <img src="/images/leineckersLogo.png" alt="Leinecker's Pages Logo" class="form-logo">
-            <button type="button" class="buttonLogo" id="flowerAnimation" onclick="doFlowerAnimation()">trying</button>
+            <button aria-label = "flower animation" type="button" class="buttonForFlowerAnimation" id="flowerAnimation" onclick="doFlowerAnimation()"></button>
             <h1 class="formLabel"> Log In</h1>
             <div class="inputForms">
 
@@ -61,7 +63,6 @@
         </form>
 
         <script src="js/md5.js"></script>
-        <script src="js/code.js"></script>
     </div>
 </div>
 </body>
