@@ -254,7 +254,6 @@ function doAddContact() {
     xhr.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
         console.log("contact has been added.");
-
         // if (jsonObject.error) {
         //   document.getElementById("addResult").innerHTML = jsonObject.error;
         //   return;
