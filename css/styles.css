@@ -26,9 +26,9 @@ body:not(.dashboard):after {
   position: fixed;
   top: 0;
   right: 0;
-  width: 30%;
+  width: 40%;
   height: 100vh;
-  background-image: url("/images/Untitled\ design\ \(3\).PNG");
+  background-image: url("/images/newBG.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: right top;
