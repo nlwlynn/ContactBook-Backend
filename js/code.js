@@ -315,9 +315,9 @@ function addRow(jsonPayload) {
   //actual html for the card info
   const contactInfo = `
        <div class="contactName">
-          <h3 data-firstname="${contactJSON.firstName}" data-lastname="${contactJSON.lastName}">
+          <h1 data-firstname="${contactJSON.firstName}" data-lastname="${contactJSON.lastName}">
                 ${contactJSON.firstName} ${contactJSON.lastName}
-            </h3>
+            </h1>
        </div>
        <div class="contactDetails">
            <p><strong>Phone:</strong> ${contactJSON.phone}</p>
@@ -688,119 +688,31 @@ function validateAdd(firstName, lastName, phone, email) {
 //validate login
 function validLoginForm(loginUser, loginPass) {}
 
-doFlowerAnimation();
+function doFlowerAnimation()
 {
-  var falling = true;
+  let animationDuration = 10000; // 10 seconds
+            let startTime = Date.now();
 
-  TweenLite.set("#background", { perspective: 600 });
-  //TweenLite.set("img",{xPercent:"-50%",yPercent:"-50%"})
+            function createFlower() {
+                if (Date.now() - startTime > animationDuration) return;
 
-  var total = 10;
-  var container = document.getElementById("background"),
-    w = window.innerWidth,
-    h = window.innerHeight;
+                const flower = document.createElement('div');
+                flower.classList.add('flower');
+                flower.innerHTML = '🌸'; // Small pink flower emoji
+                flower.style.left = Math.random() * 100 + 'vw';
+                flower.style.fontSize = Math.random() * 15 + 15 + 'px'; // Random size
+                flower.style.animationDuration = (Math.random() * 3 + 2) + 's'; // Random fall speed
 
-  for (i = 0; i < total; i++) {
-    var Div = document.createElement("div");
-    var Div2 = document.createElement("div");
-    var Div3 = document.createElement("div");
-    TweenLite.set(Div, {
-      attr: { class: "dot" },
-      x: R(0, w),
-      y: R(-200, -150),
-      z: R(-200, 200),
-      xPercent: "-50%",
-      yPercent: "-50%",
-    });
-    TweenLite.set(Div2, {
-      attr: { class: "dot2" },
-      x: R(0, w),
-      y: R(-200, -150),
-      z: R(-200, 200),
-      xPercent: "-50%",
-      yPercent: "-50%",
-    });
-    TweenLite.set(Div3, {
-      attr: { class: "dot3" },
-      x: R(0, w),
-      y: R(-200, -150),
-      z: R(-200, 200),
-      xPercent: "-50%",
-      yPercent: "-50%",
-    });
-    container.appendChild(Div);
-    container.appendChild(Div2);
-    container.appendChild(Div3);
-    animm(Div);
-    animm2(Div2);
-    animm3(Div3);
-  }
+                document.body.appendChild(flower);
 
-  function animm(elm) {
-    TweenMax.to(elm, R(6, 15), {
-      y: h + 100,
-      ease: Linear.easeNone,
-      repeat: -1,
-      delay: -15,
-    });
-    TweenMax.to(elm, R(4, 8), {
-      x: "+=100",
-      rotationZ: R(0, 180),
-      repeat: -1,
-      yoyo: true,
-      ease: Sine.easeInOut,
-    });
-    TweenMax.to(elm, R(2, 8), {
-      repeat: -1,
-      yoyo: true,
-      ease: Sine.easeInOut,
-      delay: -5,
-    });
-  }
-  function animm2(elm) {
-    TweenMax.to(elm, R(6, 15), {
-      y: h + 100,
-      ease: Linear.easeNone,
-      repeat: -1,
-      delay: -25,
-    });
-    TweenMax.to(elm, R(4, 8), {
-      x: "+=100",
-      rotationZ: R(0, 180),
-      repeat: -1,
-      yoyo: true,
-      ease: Sine.easeInOut,
-    });
-    TweenMax.to(elm, R(2, 8), {
-      repeat: -1,
-      yoyo: true,
-      ease: Sine.easeInOut,
-      delay: -5,
-    });
-  }
-  function animm3(elm) {
-    TweenMax.to(elm, R(6, 15), {
-      y: h + 100,
-      ease: Linear.easeNone,
-      repeat: -1,
-      delay: -5,
-    });
-    TweenMax.to(elm, R(4, 8), {
-      x: "+=100",
-      rotationZ: R(0, 180),
-      repeat: -1,
-      yoyo: true,
-      ease: Sine.easeInOut,
-    });
-    TweenMax.to(elm, R(2, 8), {
-      repeat: -1,
-      yoyo: true,
-      ease: Sine.easeInOut,
-      delay: -5,
-    });
-  }
+                setTimeout(() => {
+                    flower.remove();
+                }, 5000);
+            }
 
-  function R(min, max) {
-    return min + Math.random() * (max - min);
-  }
+            let interval = setInterval(createFlower, 200);
+
+            setTimeout(() => {
+                clearInterval(interval);
+            }, animationDuration);
 }
