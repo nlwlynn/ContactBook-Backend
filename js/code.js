@@ -359,7 +359,7 @@ function updateCard(editBtn) {
   const resultSpan = document.getElementById("addResult");
 
   //retrieve the info from the card that contaisn the info we want to change
-  const nameElement = card.querySelector(".contactName h3");
+  const nameElement = card.querySelector(".contactName h1");
   const phoneElement = card.querySelector(".contactDetails p:first-child");
   const emailElement = card.querySelector(".contactDetails p:last-child");
 
@@ -508,7 +508,7 @@ function deleteCard(deleteBtn) {
   if (!confirm("Are you sure you would like to delete this contact?")) return;
   // find button parent
   const card = deleteBtn.closest(".singleCard");
-  const nameElement = card.querySelector(".contactName h3");
+  const nameElement = card.querySelector(".contactName h1");
 
   // jsonning
   let tmp = {
