@@ -16,7 +16,7 @@ body:not(.dashboard):before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #a2d2ff 60%, #ffc0cb 100%); /*e8c1c5*/
+  background: linear-gradient(225deg, #a2d2ff 60%, #ffc0cb 100%); /*e8c1c5*/
   z-index: 0;
   pointer-events: none;
 }
@@ -26,9 +26,9 @@ body:not(.dashboard):after {
   position: fixed;
   top: 0;
   right: 0;
-  width: 40%;
+  width: 30%;
   height: 100vh;
-  background-image: url("/images/newBG.png");
+  background-image: url("/images/Untitled\ design\ \(3\).PNG");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: right top;
